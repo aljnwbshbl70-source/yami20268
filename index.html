@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Yami Dev | منصة المطور الشخصية</title>
+  <title>Yami Dev | منصة المطور الاحترافية</title>
   
   <!-- Tailwind CSS & FontAwesome Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,548 +12,586 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* منع أي اهتزاز أو تحرك جانبي للموقع بالكامل */
     html, body {
       max-width: 100%;
       overflow-x: hidden;
       position: relative;
       font-family: 'Cairo', sans-serif;
-      transition: background-color 0.3s, color 0.3s, filter 0.3s;
+      transition: background-color 0.4s, color 0.4s;
     }
     
-    /* Glassmorphic Classes */
-    .glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    /* خلفيات فائقة البروز والجمال */
+    .bg-cyberpunk {
+      background: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
+      --accent-color: #a855f7;
     }
-    .dark .glass {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .bg-golden {
+      background: radial-gradient(circle at center, #2e250e 0%, #0f0b03 100%);
+      --accent-color: #eab308;
+    }
+    .bg-neon {
+      background: radial-gradient(circle at center, #062f22 0%, #022c22 100%);
+      --accent-color: #10b981;
+    }
+
+    /* الزجاج المطور والأكثر بروزاً */
+    .glass-heavy {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
     
-    /* Glow Animations */
-    .glow-logo {
-      box-shadow: 0 0 25px rgba(124, 58, 237, 0.7);
-      animation: pulseGlow 2s infinite alternate;
+    /* توهج الشعارات وتعديل خلفية الأفتار لتكون مهيبة */
+    .glow-accent {
+      box-shadow: 0 0 30px var(--accent-color);
+      animation: pulseGlow 2.5s infinite alternate;
+      border: 3px solid rgba(168, 85, 247, 0.6);
+      background: radial-gradient(circle, rgba(15, 23, 42, 0.9) 0%, rgba(168, 85, 247, 0.2) 100%);
     }
     @keyframes pulseGlow {
-      0% { box-shadow: 0 0 15px rgba(124, 58, 237, 0.5); }
-      100% { box-shadow: 0 0 35px rgba(124, 58, 237, 0.95); }
+      0% { box-shadow: 0 0 15px var(--accent-color); }
+      100% { box-shadow: 0 0 40px var(--accent-color); }
     }
     
-    /* Eye Protection (Warm Filter) */
-    .eye-care-active {
-      filter: sepia(0.4) saturate(0.9) contrast(0.95) !important;
+    /* تأثيرات حركية خفيفة للخلفيات المخصصة للأقسام */
+    .dynamic-bg-section {
+      background-size: cover;
+      background-position: center;
+      transition: background 0.5s ease-in-out;
     }
   </style>
 </head>
-<body id="mainBody" class="bg-slate-900 text-slate-100 min-h-screen text-base overflow-hidden">
+<body id="mainBody" class="bg-cyberpunk text-slate-100 min-h-screen overflow-hidden">
 
-  <!-- شاشة الدخول الترحيبية الدينية والتحميل الدائري -->
+  <!-- ============================================== -->
+  <!-- 1. PRELOADER & SPLASH SCREEN (INTELLIGENT RELIANCE) -->
+  <!-- ============================================== -->
   <div id="welcomeSplash" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="absolute inset-0 bg-gradient-to-b from-purple-950/20 to-slate-950 pointer-events-none"></div>
-    <div class="glass max-w-lg w-full p-8 rounded-3xl border border-purple-500/30 relative z-10 space-y-6 shadow-2xl animate-fade-in-up">
+    <div class="glass-heavy max-w-lg w-full p-8 rounded-3xl relative z-10 space-y-6">
       <div class="w-20 h-20 bg-purple-500/10 text-purple-400 rounded-full flex items-center justify-center mx-auto border border-purple-500/30 animate-pulse">
         <i class="fas fa-heart text-4xl"></i>
       </div>
-      <h3 class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">مرحباً بك في منصة Yami Dev</h3>
+      <h3 class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">منصة Yami Dev</h3>
       <div class="space-y-3 text-slate-300">
         <p class="text-lg font-bold">✨ اذكروا الله وصلّوا على النبي دائماً وأبداً ✨</p>
         <p class="text-sm font-semibold opacity-80">اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ ﷺ</p>
       </div>
       
-      <!-- مؤشر التحميل الدائري -->
-      <div class="flex flex-col items-center gap-3">
+      <!-- مؤشر الانتظار حتى اكتمال جلب البيانات من فايربيز بعبارة محترمة وراقية -->
+      <div id="loaderStatus" class="flex flex-col items-center gap-3">
         <div class="w-12 h-12 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin"></div>
-        <span class="text-xs text-purple-400 font-bold tracking-wider">يرجى  الضغط على الزر اسفل...</span>
+        <span id="loaderText" class="text-sm text-purple-400 font-bold">جاري تحميل أفضل تطبيقات من أجلك، انتظر قليلاً... ✨</span>
       </div>
       
-      <button onclick="dismissSplash()" id="splashBtn" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black py-4 rounded-xl text-base transition shadow-lg shadow-purple-600/30 transform hover:scale-[1.02]">
-        دخول المنصة البرمجية
+      <button onclick="dismissSplash()" id="splashBtn" disabled class="w-full bg-slate-800 text-slate-400 font-black py-4 rounded-xl text-base transition cursor-not-allowed">
+        تحميل الملفات البرمجية...
       </button>
     </div>
   </div>
 
-  <!-- الخلفية الزخرفية مؤمنة داخل حاوية مطلقة لا تخرج عن الإطار -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-    <div id="sectionBgBlob" class="w-full h-full bg-cover bg-center opacity-10 transition-all duration-500"></div>
-    <div class="absolute top-[-10%] left-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] rounded-full bg-purple-900/20 blur-[100px]"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] rounded-full bg-blue-900/20 blur-[100px]"></div>
+  <!-- ============================================== -->
+  <!-- 2. POPUP INTERACTIVE STATISTICS BANNER -->
+  <!-- ============================================== -->
+  <div id="statsBanner" class="fixed inset-0 z-[80] bg-black/90 flex items-center justify-center p-4 transition-all duration-500 hidden" onclick="closeStatsBanner()">
+    <div class="glass-heavy max-w-4xl w-full p-8 rounded-3xl text-center space-y-8 transform scale-95 transition-all" onclick="event.stopPropagation()">
+      <h3 class="text-2xl sm:text-4xl font-black text-yellow-400">🔥 إحصائيات وإنجازات Yami Dev الكلية</h3>
+      <p class="text-sm text-gray-300 font-semibold">انقر في أي مكان على الشاشة لإغلاق الإحصائيات والانتقال مباشرة للمنصة</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-black/40 p-6 rounded-2xl border border-white/5">
+          <i class="fas fa-cubes text-4xl text-purple-500 mb-3"></i>
+          <h4 id="statApps" class="text-3xl font-black">0</h4>
+          <p class="text-xs text-gray-400 mt-1 font-bold">تطبيقات منجزة</p>
+        </div>
+        <div class="bg-black/40 p-6 rounded-2xl border border-white/5">
+          <i class="fas fa-tools text-4xl text-blue-500 mb-3"></i>
+          <h4 id="statTools" class="text-3xl font-black">0</h4>
+          <p class="text-xs text-gray-400 mt-1 font-bold">أدوات مطورة</p>
+        </div>
+        <div class="bg-black/40 p-6 rounded-2xl border border-white/5">
+          <i class="fas fa-cloud-download-alt text-4xl text-green-500 mb-3"></i>
+          <h4 id="statDownloads" class="text-3xl font-black">15,420</h4>
+          <p class="text-xs text-gray-400 mt-1 font-bold">التحميلات</p>
+        </div>
+        <div class="bg-black/40 p-6 rounded-2xl border border-white/5">
+          <i class="fas fa-eye text-4xl text-pink-500 mb-3"></i>
+          <h4 id="statViews" class="text-3xl font-black">48,910</h4>
+          <p class="text-xs text-gray-400 mt-1 font-bold">المشاهدات</p>
+        </div>
+      </div>
+      
+      <button onclick="closeStatsBanner()" class="bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 rounded-xl font-bold text-sm text-white">دخول المنصة الآن</button>
+    </div>
   </div>
 
-  <!-- حاوية الإشعارات المتعددة (ثابتة في زاوية الشاشة بشكل مرن ومستقر) -->
-  <div id="toastContainer" class="fixed top-5 left-5 z-50 flex flex-col gap-3 max-w-sm w-[90%] sm:w-auto pointer-events-none"></div>
+  <!-- خلفية تفاعلية بارزة ومتحركة -->
+  <div id="bodyBgContainer" class="absolute inset-0 overflow-hidden pointer-events-none z-0 transition-all duration-750">
+    <div id="sectionBgBlob" class="w-full h-full bg-cover bg-center opacity-30 transition-all duration-700 scale-105"></div>
+  </div>
 
-  <!-- محتوى الموقع الرئيسي داخل حاوية آمنة لمنع التمدد الأفقي -->
-  <div class="relative z-10 w-full max-w-full">
-    
-    <!-- Announcement Banner -->
-    <div id="topBanner" class="hidden bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-center py-3 px-4 text-xs sm:text-sm font-bold relative transition-all">
-      <span id="bannerText">تحميل تحديث أداة Yami الجديد متوفر الآن!</span>
-      <button onclick="document.getElementById('topBanner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-200 text-lg">
-        <i class="fas fa-times"></i>
-      </button>
+  <!-- حاوية الإشعارات -->
+  <div id="toastContainer" class="fixed top-5 left-5 z-[90] flex flex-col gap-3 max-w-sm w-[90%] sm:w-auto pointer-events-none"></div>
+
+  <!-- ============================================== -->
+  <!-- 3. TOP NAVIGATION & SIDEBAR MENU -->
+  <!-- ============================================== -->
+  <header class="glass-heavy sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <button onclick="toggleSidebar(true)" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white transition">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <!-- تحديث الافتار ليكون بخلفية وتأثير زجاجي متكامل حول اللوجو -->
+        <div class="p-1 rounded-full glow-accent">
+          <img id="siteLogo" src="https://i.ibb.co/68fDygm/yamidevlolgo.png" alt="Logo" class="w-11 h-11 rounded-full object-cover flex-shrink-0">
+        </div>
+        <div>
+          <h1 id="siteName" class="text-lg sm:text-xl font-black text-white">Yami Dev</h1>
+        </div>
+      </div>
+
+      <!-- محرك بحث أبجدي علوي خارجي -->
+      <div class="hidden md:flex items-center bg-slate-850/80 rounded-xl px-4 py-2 border border-white/10 w-80">
+        <i class="fas fa-search text-gray-400 ml-2"></i>
+        <input type="text" id="externalSearchInput" oninput="runAlphabeticalSearch(this.value)" placeholder="ابحث أبجدياً عن البرامج والأدوات..." class="bg-transparent text-xs w-full text-white focus:outline-none font-bold">
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- أزرار تسجيل الدخول الخارجي -->
+        <div id="userProfileArea" class="flex items-center gap-2">
+          <button id="authBtnExternal" onclick="openLoginModal()" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2">
+            <i class="fab fa-google"></i> الدخول بحساب Google
+          </button>
+        </div>
+        
+        <button onclick="toggleAdminPanel()" class="bg-purple-600/10 border border-purple-500/30 hover:bg-purple-600 text-purple-400 hover:text-white p-3 rounded-xl transition text-sm">
+          <i class="fas fa-shield-alt"></i>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <!-- Header & Navigation -->
-    <header id="siteHeader" class="glass sticky top-0 z-40 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
-        <div class="flex items-center gap-4">
-          <img id="siteLogo" src="https://i.ibb.co/68fDygm/yamidevlolgo.png" alt="Yami Dev" class="w-14 h-14 rounded-full object-cover glow-logo flex-shrink-0">
-          <div>
-            <h1 id="siteName" class="text-xl sm:text-2xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Yami Dev</h1>
-            <p class="text-xs sm:text-sm text-gray-300 font-semibold">مطور تطبيقات وأدوات</p>
+  <!-- القائمة الجانبية المحدثة (Sidebar) -->
+  <div id="sidebarMenu" class="fixed inset-y-0 right-0 z-50 w-80 bg-slate-950 border-l border-white/10 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+    <div class="space-y-6">
+      <div class="flex justify-between items-center border-b border-white/10 pb-4">
+        <h3 class="font-black text-lg text-white">تصفح المنصة</h3>
+        <button onclick="toggleSidebar(false)" class="text-red-400 hover:text-red-300"><i class="fas fa-times-circle text-2xl"></i></button>
+      </div>
+      
+      <nav class="space-y-3 font-bold text-sm">
+        <a href="#apps" onclick="toggleSidebar(false)" class="block p-3 rounded-xl bg-white/5 hover:bg-purple-600 hover:text-white transition"><i class="fas fa-th-large ml-2"></i> الأقسام الحالية</a>
+        <a href="#tools" onclick="toggleSidebar(false)" class="block p-3 rounded-xl bg-white/5 hover:bg-purple-600 hover:text-white transition"><i class="fas fa-star ml-2"></i> المضاف حديثاً (الجديد)</a>
+        <a href="#apps" onclick="toggleSidebar(false)" class="block p-3 rounded-xl bg-white/5 hover:bg-purple-600 hover:text-white transition"><i class="fas fa-laptop-code ml-2"></i> برامج المطور والمنصات</a>
+        
+        <!-- قسم أيقونات التواصل الاجتماعي في السايد بار بناءً على ما ترفعه من الإدارة -->
+        <div class="border-t border-white/10 pt-4 mt-3">
+          <p class="text-xs text-purple-400 mb-2 font-black">حسابات المطور الرسمية:</p>
+          <div class="flex justify-around bg-white/5 p-2 rounded-xl border border-white/5">
+            <a id="devInstagram" href="#" target="_blank" class="text-gray-400 hover:text-pink-500 text-lg transition"><i class="fab fa-instagram"></i></a>
+            <a id="devTikTok" href="#" target="_blank" class="text-gray-400 hover:text-white text-lg transition"><i class="fab fa-tiktok"></i></a>
+            <a id="devYoutube" href="#" target="_blank" class="text-gray-400 hover:text-red-500 text-lg transition"><i class="fab fa-youtube"></i></a>
+            <a id="devFacebook" href="#" target="_blank" class="text-gray-400 hover:text-blue-500 text-lg transition"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
-        
-        <nav class="hidden md:flex items-center gap-8 text-sm sm:text-base font-bold">
-          <a href="#apps" class="hover:text-purple-400 transition">التطبيقات</a>
-          <a href="#tools" class="hover:text-purple-400 transition">الأدوات</a>
-          <a href="#stats" class="hover:text-purple-400 transition">الإحصائيات</a>
-          <button onclick="toggleAdminPanel()" class="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 transition">
-            <i class="fas fa-cog"></i> لوحة التحكم
-          </button>
-        </nav>
 
-        <div class="flex items-center gap-3">
-          <button id="eyeCareToggle" onclick="toggleEyeCare()" class="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition" title="حماية العيون">
-            <i class="fas fa-eye-slash text-base sm:text-lg"></i>
+        <div class="border-t border-white/10 pt-4 mt-2">
+          <p class="text-xs text-purple-400 mb-2 font-black">اختر مظهر المنصة (ثلاث ثيمات):</p>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="changeThemeMode('cyberpunk')" class="bg-indigo-900 border border-indigo-500 py-2 rounded-lg text-[10px] text-white">Cyberpunk</button>
+            <button onclick="changeThemeMode('golden')" class="bg-amber-900 border border-amber-500 py-2 rounded-lg text-[10px] text-white">Golden</button>
+            <button onclick="changeThemeMode('neon')" class="bg-emerald-900 border border-emerald-500 py-2 rounded-lg text-[10px] text-white">Emerald</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="space-y-3">
+      <!-- تعديل الصيغة الافتراضية لرقم الهاتف لتكون بالصيغة الدولية المطلوبة -->
+      <a href="https://wa.me/+966500000000" id="sidebarWhatsapp" target="_blank" class="block w-full bg-green-600 text-white font-bold py-3.5 rounded-xl text-center text-xs transition">
+        <i class="fab fa-whatsapp ml-1"></i> تواصل مع المطور
+      </a>
+      <a href="https://youtube.com/@yamidev" id="sidebarYoutube" target="_blank" class="block w-full bg-red-600 text-white font-bold py-3.5 rounded-xl text-center text-xs transition">
+        <i class="fab fa-youtube ml-1"></i> قناة المطور الرسمية
+      </a>
+    </div>
+  </div>
+
+  <!-- محرك البحث الخارجي في الشاشات الصغيرة -->
+  <div class="p-4 md:hidden relative z-10">
+    <div class="flex items-center bg-slate-850/90 rounded-2xl px-4 py-3.5 border border-white/10">
+      <i class="fas fa-search text-gray-400 ml-2"></i>
+      <input type="text" oninput="runAlphabeticalSearch(this.value)" placeholder="ابحث أبجدياً عن البرامج والأدوات..." class="bg-transparent text-sm w-full text-white focus:outline-none font-bold">
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- 4. MAIN CONTENT AREA -->
+  <!-- ============================================== -->
+  <main class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+    
+    <!-- Hero Box -->
+    <section class="text-center py-8 space-y-6">
+      <h2 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-white"></h2>
+      <p id="heroBio" class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-semibold"></p>
+    </section>
+
+    <!-- Sections Filters -->
+    <section id="sectionsFilterSection" class="space-y-4 dynamic-bg-section p-6 rounded-3xl">
+      <h3 class="text-lg sm:text-xl font-black text-white flex items-center gap-2"><i class="fas fa-th-large text-purple-400"></i> الأقسام المتاحة</h3>
+      <div id="sectionsFilterContainer" class="flex flex-wrap gap-2.5"></div>
+    </section>
+
+    <!-- Applications Grid -->
+    <section id="apps" class="space-y-6 dynamic-bg-section p-6 rounded-3xl">
+      <div class="border-b border-white/10 pb-3">
+        <h3 class="text-xl sm:text-2xl font-black text-white">أحدث التطبيقات المرفوعة</h3>
+      </div>
+      <div id="appsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section id="tools" class="space-y-6 dynamic-bg-section p-6 rounded-3xl">
+      <div class="border-b border-white/10 pb-3">
+        <h3 class="text-xl sm:text-2xl font-black text-white">الأدوات البرمجية الذكية</h3>
+      </div>
+      <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+  </main>
+
+  <!-- ============================================== -->
+  <!-- 5. USER REGISTRATION / CUSTOMIZATION MODAL (UPLOADS DIRECTLY) -->
+  <!-- ============================================== -->
+  <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div class="glass-heavy max-w-md w-full p-6 sm:p-8 rounded-3xl space-y-5 text-slate-100">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <h4 class="font-bold text-base sm:text-lg text-white"><i class="fas fa-user-plus text-purple-400 animate-pulse"></i> إكمال إعدادات حساب Google المخصص</h4>
+        <button onclick="closeLoginModal()" class="text-red-400"><i class="fas fa-times-circle text-xl"></i></button>
+      </div>
+      
+      <div class="space-y-4 text-xs sm:text-sm">
+        <!-- خطوة 1: تسجيل دخول جوجل الفعلي أولاً -->
+        <div id="googleAuthStep" class="text-center py-4 space-y-3">
+          <p class="text-gray-300 font-bold">الرجاء المصادقة عبر حسابك بـ Google أولاً لفتح صلاحية التخصيص والتحميلات:</p>
+          <button id="googlePrimaryBtn" class="bg-white text-slate-900 font-black px-6 py-3 rounded-xl flex items-center justify-center gap-2 mx-auto shadow-lg hover:bg-gray-100 transition w-full">
+            <img src="https://lh3.googleusercontent.com/COxitS7yZG1vW2CO2m4th87M1Lg3AXj778vQA9Ze7gA04C1vsaM4-38_Z5m67Yg49nhF" class="w-5 h-5 object-contain" alt="Google Logo">
+            اربط حساب Google الخاص بك
           </button>
-          <button id="themeToggle" class="p-3 rounded-full bg-slate-800 hover:bg-slate-700 text-yellow-400 transition">
-            <i id="themeIcon" class="fas fa-sun text-base sm:text-lg"></i>
-          </button>
-          <button onclick="toggleAdminPanel()" class="md:hidden bg-purple-600 p-3 rounded-full text-white text-base">
-            <i class="fas fa-cog"></i>
+        </div>
+
+        <!-- خطوة 2: حقول إدخال وتخصيص تظهر فقط بعد نجاح جوجل -->
+        <div id="userFieldsStep" class="hidden space-y-4">
+          <div>
+            <label class="text-gray-300 block mb-1 font-bold">الاسم الذي تود ظهوره بالترحيب:</label>
+            <input type="text" id="userInputName" placeholder="اكتب اسمك هنا..." class="w-full bg-slate-800 p-3.5 rounded-xl text-white font-bold border border-white/10 focus:border-purple-500 focus:outline-none">
+          </div>
+          
+          <div class="bg-purple-950/40 p-4 rounded-xl border border-purple-500/20 space-y-2">
+            <p class="font-extrabold text-purple-300 text-xs">🎁 المزايا والجوائز الممنوحة لك:</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300 text-[11px] leading-relaxed">
+              <li>رفع وتخصيص خلفيات لكافة أركان الموقع من جهازك مباشرة.</li>
+              <li>الولوج وتحميل برامج المطور الحصرية الممنوعة للعامة.</li>
+              <li>استقبال عبارات ترحيبية مهيبة ومخصصة فور ولوجك.</li>
+            </ul>
+          </div>
+
+          <div>
+            <label class="text-gray-300 block mb-1 font-bold">اختر صورة الخلفية المفضلة من جهازك (رفع مباشر):</label>
+            <input type="file" id="userInputBgFile" accept="image/*" class="w-full bg-slate-800 p-3 rounded-xl text-white border border-white/10">
+          </div>
+
+          <div>
+            <label class="text-gray-300 block mb-1 font-bold">رفع ملف موسيقى خلفية هادئة خاص بك (اختياري):</label>
+            <input type="file" id="userInputMusicFile" accept="audio/*" class="w-full bg-slate-800 p-3 rounded-xl text-white border border-white/10">
+          </div>
+
+          <button id="saveCustomizeBtn" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 py-3.5 rounded-xl font-extrabold text-white transition hover:scale-[1.02]">
+            تحديث وتطبيق التخصيص الشخصي ✨
           </button>
         </div>
       </div>
-    </header>
+    </div>
+  </div>
 
-    <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 text-center relative">
-      <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-5 py-2 rounded-full text-purple-400 text-xs sm:text-sm font-bold mb-8">
-        <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-ping"></span>
-        متاح حالياً للمشاريع الخاصة
+  <!-- ============================================== -->
+  <!-- 6. نافذة التحقق من الاشتراك الإجباري (توهيمية وخيالية) -->
+  <!-- ============================================== -->
+  <div id="subVerificationModal" class="fixed inset-0 z-[95] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md hidden">
+    <div class="glass-heavy max-w-md w-full p-6 sm:p-8 rounded-3xl space-y-6 text-center text-slate-100">
+      <div class="w-16 h-16 bg-green-500/10 text-green-400 rounded-full flex items-center justify-center mx-auto border border-green-500/30 animate-pulse">
+        <i class="fab fa-whatsapp text-3xl"></i>
       </div>
-      <h2 id="heroTitle" class="text-4xl sm:text-5xl lg:text-7xl font-black mb-8 leading-tight">ابتكار الأدوات <br><span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">التي تسهل حياتك الرقمية</span></h2>
-      <p id="heroBio" class="text-gray-300 max-w-3xl mx-auto text-base sm:text-lg lg:text-xl mb-10 leading-relaxed font-semibold">
-        مرحباً بكم في معرض أعمالي. أقوم بتطوير تطبيقات ذكية، أدوات مفتوحة المصدر، وحلول تقنية مخصصة تدمج بين جمال التصميم وقوة الأداء الفعلي.
+      <h4 class="text-xl font-black text-white">🔒 فحص الاشتراك الإجباري في قناة الواتس</h4>
+      <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-bold">
+        عذراً! يبدو أنك نسيت الانضمام لقناة الواتساب الخاصة بالمطور. لفتح قفل التحميل مباشرة، يرجى الضغط على الزر أدناه للتحقق من اشتراكك أولاً.
       </p>
-      <div class="flex justify-center gap-4 flex-wrap">
-        <a href="#apps" class="bg-purple-600 hover:bg-purple-700 text-white text-base font-extrabold px-8 sm:px-10 py-4 rounded-2xl transition shadow-lg shadow-purple-600/30">تصفح التطبيقات</a>
-        <a href="#tools" class="bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 text-base font-bold px-8 sm:px-10 py-4 rounded-2xl transition">الأدوات البرمجية</a>
-      </div>
-    </section>
 
-    <!-- Channels Section -->
-    <section id="channelsSection" class="max-w-7xl mx-auto px-4 mb-16">
-      <div class="glass rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-center gap-5">
-        <span class="text-sm sm:text-base text-gray-300 font-bold text-center">تابع آخر التحديثات عبر قنواتي:</span>
-        <div id="channelsContainer" class="flex flex-wrap justify-center gap-4"></div>
-      </div>
-    </section>
-
-    <!-- Statistics Grid -->
-    <section id="stats" class="max-w-7xl mx-auto px-4 py-8">
-      <div id="statsBox" class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="glass p-6 sm:p-8 rounded-2xl text-center">
-          <i class="fas fa-cubes text-3xl sm:text-4xl text-purple-500 mb-4"></i>
-          <h3 id="statApps" class="text-3xl sm:text-4xl font-black mb-2">0</h3>
-          <p class="text-xs sm:text-sm text-gray-400 font-bold">تطبيقات منجزة</p>
-        </div>
-        <div class="glass p-6 sm:p-8 rounded-2xl text-center">
-          <i class="fas fa-tools text-3xl sm:text-4xl text-blue-500 mb-4"></i>
-          <h3 id="statTools" class="text-3xl sm:text-4xl font-black mb-2">0</h3>
-          <p class="text-xs sm:text-sm text-gray-400 font-bold">أدوات مطورة</p>
-        </div>
-        <div class="glass p-6 sm:p-8 rounded-2xl text-center">
-          <i class="fas fa-cloud-download-alt text-3xl sm:text-4xl text-green-500 mb-4"></i>
-          <h3 id="statDownloads" class="text-3xl sm:text-4xl font-black mb-2">0</h3>
-          <p class="text-xs sm:text-sm text-gray-400 font-bold">إجمالي التحميلات</p>
-        </div>
-        <div class="glass p-6 sm:p-8 rounded-2xl text-center">
-          <i class="fas fa-eye text-3xl sm:text-4xl text-pink-500 mb-4"></i>
-          <h3 id="statViews" class="text-3xl sm:text-4xl font-black mb-2">0</h3>
-          <p class="text-xs sm:text-sm text-gray-400 font-bold">المشاهدات الكلية</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sections Filter -->
-    <section class="max-w-7xl mx-auto px-4 py-6">
-      <div id="sectionsFilterContainer" class="flex flex-wrap gap-3 justify-center">
-        <button onclick="filterContent('all')" class="bg-purple-600 text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition">الكل</button>
-      </div>
-    </section>
-
-    <!-- Applications Section -->
-    <section id="apps" class="max-w-7xl mx-auto px-4 py-10">
-      <div class="mb-8">
-        <h2 class="text-2xl sm:text-3xl font-black text-white">أحدث التطبيقات</h2>
-        <p class="text-xs sm:text-sm text-gray-400 font-semibold">برمجيات ذكية للهواتف والويب</p>
-      </div>
-      <div id="appsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-    </section>
-
-    <!-- Tools Section -->
-    <section id="tools" class="max-w-7xl mx-auto px-4 py-10">
-      <div class="mb-8">
-        <h2 class="text-2xl sm:text-3xl font-black text-white">الأدوات المساعدة</h2>
-        <p class="text-xs sm:text-sm text-gray-400 font-semibold">سكربتات وإضافات تسهل أعمالك اليومية</p>
-      </div>
-      <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="siteFooter" class="glass border-t border-white/5 py-10 mt-24">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="text-sm sm:text-base text-gray-300 font-semibold">جميع الحقوق محفوظة © <span class="text-white font-black">Yami Dev</span> 2026</p>
-        <p class="text-xs text-gray-400 mt-2 font-medium">تطوير بكل حب وشغف</p>
-      </div>
-    </footer>
-  </div>
-
-  <!-- ============================================== -->
-  <!-- DETAILS MODAL WITH ADVANCED IMAGE SLIDER -->
-  <!-- ============================================== -->
-  <div id="detailsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
-    <div id="detailsModalBox" class="glass rounded-2xl w-full max-w-2xl overflow-y-auto max-h-[90vh] p-6 sm:p-8 text-slate-100">
-      <div class="flex justify-between items-start border-b border-white/10 pb-4 mb-5">
-        <h3 id="modalItemTitle" class="text-xl sm:text-3xl font-black">اسم العنصر</h3>
-        <button onclick="closeDetailsModal()" class="text-gray-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
-      </div>
-      
-      <div class="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden bg-slate-800 mb-6 group">
-        <img id="modalSliderImg" src="" class="w-full h-full object-cover transition-all duration-300">
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full hover:bg-black/80 transition flex items-center justify-center text-lg">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full hover:bg-black/80 transition flex items-center justify-center text-lg">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold text-white" id="sliderIndexText">
-          1 / 1
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div class="space-y-2">
-          <p class="text-gray-300 text-sm sm:text-base leading-relaxed" id="modalItemDesc"></p>
-        </div>
-        <div class="grid grid-cols-2 gap-4 text-xs sm:text-sm bg-black/30 p-4 rounded-xl font-semibold">
-          <div><span class="text-gray-400">الإصدار:</span> <span id="modalItemVersion"></span></div>
-          <div><span class="text-gray-400">الحجم:</span> <span id="modalItemSize"></span></div>
-          <div><span class="text-gray-400">المطور:</span> <span id="modalItemDeveloper"></span></div>
-          <div><span class="text-gray-400">تاريخ الإضافة:</span> <span id="modalItemAdded">N/A</span></div>
-        </div>
-      </div>
-      
-      <div class="mb-6">
-        <h4 class="font-extrabold text-lg mb-3">سجل التغييرات (Changelog):</h4>
-        <pre id="modalItemChangelog" class="bg-black/50 p-5 rounded-2xl text-xs sm:text-sm overflow-x-auto text-gray-300 font-mono whitespace-pre-wrap leading-relaxed"></pre>
-      </div>
-      <div class="flex justify-end gap-3">
-        <button onclick="closeDetailsModal()" class="px-6 py-3 rounded-xl text-xs sm:text-sm font-bold border border-white/10 hover:bg-white/5 transition">إغلاق</button>
-        <button id="modalDownloadBtn" class="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition flex items-center gap-2">
-          <i class="fas fa-download"></i> بدء التحميل
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Subscribe Lock Modal -->
-  <div id="lockModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="glass rounded-2xl max-w-md w-full p-6 sm:p-8 text-center">
-      <div class="w-20 h-20 bg-purple-500/10 text-purple-500 rounded-full flex items-center justify-center mx-auto mb-5 border border-purple-500/20">
-        <i class="fas fa-lock text-3xl animate-bounce"></i>
-      </div>
-      <h3 class="text-xl sm:text-2xl font-black mb-3">رابط التحميل مقفل مؤقتاً</h3>
-      <p class="text-sm text-gray-300 mb-8 leading-relaxed font-medium">لدعم المطور والاستمرار في تحديث الأدوات مجاناً، يرجى الاشتراك في القناة الرسمية أولاً لتفعيل زر التحميل.</p>
-      
-      <div class="space-y-4">
-        <a id="lockChannelLink" href="#" target="_blank" onclick="unlockNextStep()" class="block w-full bg-red-600 hover:bg-red-700 text-white font-extrabold py-4 rounded-xl text-sm sm:text-base transition flex items-center justify-center gap-3">
-          <i class="fab fa-youtube text-lg"></i> الاشتراك في القناة
+      <div class="space-y-3">
+        <a id="verificationSubLink" href="#" target="_blank" onclick="triggerSubClicked()" class="block w-full bg-green-600 hover:bg-green-700 text-white font-extrabold py-3.5 rounded-xl text-xs transition">
+          <i class="fab fa-whatsapp ml-1"></i> اضغط هنا للانضمام إلى قناة الواتساب 
         </a>
-        <button id="lockDownloadBtn" disabled class="block w-full bg-slate-700 text-slate-400 font-extrabold py-4 rounded-xl text-sm sm:text-base cursor-not-allowed transition flex items-center justify-center gap-3">
-          <i class="fas fa-arrow-down"></i> متابعة التحميل
+        
+        <button id="verificationCheckBtn" onclick="verifySubscriptionProcess()" class="w-full bg-slate-800 text-slate-500 font-black py-3.5 rounded-xl text-xs transition cursor-not-allowed" disabled>
+          التحقق من أنك مشترك
         </button>
       </div>
     </div>
   </div>
 
   <!-- ============================================== -->
-  <!-- INLINE INTEGRATED ADMIN PANEL (NON-MODAL / NON-OVERLAY) -->
+  <!-- 7. ♕ إدارتي المخصصة ♕ (INTEGRATED FULL PANEL) -->
   <!-- ============================================== -->
-  <section id="adminPanel" class="hidden max-w-7xl mx-auto px-4 my-10 transition-all duration-500">
-    <div class="bg-slate-950 border border-purple-500/30 rounded-3xl overflow-hidden shadow-2xl">
-      <div class="bg-slate-900 border-b border-white/5 p-6 flex justify-between items-center">
-        <h3 class="font-extrabold text-sm sm:text-lg text-purple-400 flex items-center gap-2">
-          <i class="fas fa-shield-alt"></i> لوحة الإدارة الشاملة (Yami Dev Control Panel)
+  <section id="adminPanel" class="hidden max-w-7xl mx-auto px-4 my-10 relative z-30">
+    <div class="glass-heavy rounded-3xl overflow-hidden">
+      <div class="bg-slate-900 border-b border-white/10 p-6 flex justify-between items-center">
+        <h3 class="font-black text-sm sm:text-lg text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-crown"></i> ♕ إدارتي المخصصة ♕
         </h3>
         <button onclick="toggleAdminPanel()" class="text-red-400 hover:text-red-300 text-sm font-bold flex items-center gap-1">
-          <i class="fas fa-times-circle text-lg"></i> إغلاق اللوحة
+          <i class="fas fa-times-circle text-lg"></i> إغلاق لوحة الإدارة
         </button>
       </div>
       
-      <!-- Admin Pin-Code Auth -->
-      <div id="adminAuthBox" class="p-8 max-w-md mx-auto text-center space-y-5 my-6">
-        <h4 class="font-bold text-base">يرجى تأكيد الرمز للدخول للوحة الإدارة</h4>
-        <input type="password" id="adminPassInput" placeholder="أدخل كلمة مرور المسؤول" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl text-center text-white text-base focus:outline-none focus:border-purple-500">
-        <button onclick="authenticateAdmin()" class="bg-purple-600 hover:bg-purple-700 w-full py-4 rounded-xl font-extrabold text-base transition">تسجيل الدخول</button>
+      <!-- الدخول السريع بـ yami2026 -->
+      <div id="adminAuthBox" class="p-8 max-w-md mx-auto text-center space-y-4">
+        <h4 class="font-bold text-sm sm:text-base text-white">يرجى إدخال كلمة المرور لتفعيل لوحة التحكم</h4>
+        
+        <input type="password" id="adminPassField" placeholder="أدخل الرمز السري للمدير" class="w-full bg-white text-slate-900 placeholder-slate-500 font-bold p-4 rounded-xl text-center text-sm border-2 border-purple-500 focus:outline-none focus:ring-2 ring-purple-400">
+        
+        <button id="adminLoginButton" class="bg-yellow-500 hover:bg-yellow-600 text-slate-950 w-full py-3.5 rounded-xl font-black text-sm transition shadow-lg">ولوج الإدارة</button>
       </div>
 
-      <!-- 5-Grid Control Dashboard (Embedded & Structured) -->
-      <div id="adminControlsBox" class="hidden p-6 sm:p-8">
-        <p class="text-gray-300 text-sm sm:text-base mb-8 text-center font-bold">مرحباً بك يا يامي. تحكم بجميع ميزات الموقع بشكل مدمج:</p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <!-- Btn 1: Sections Manager -->
-          <button onclick="openAdminSubModal('subModalSections')" class="glass p-6 rounded-2xl text-center hover:border-purple-500/50 transition flex flex-col items-center justify-center">
-            <i class="fas fa-th-large text-3xl text-purple-500 mb-3"></i>
-            <h4 class="font-bold text-sm sm:text-base">إدارة الأقسام</h4>
-            <span class="text-[11px] text-gray-400 mt-1">تعديل وإضافة أقسام جديدة</span>
-          </button>
+      <!-- محتويات اللوحة المتكاملة بعد الدخول -->
+      <div id="adminControlsBox" class="hidden p-6 sm:p-8 space-y-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- القسم الأول: إضافة وتعديل الأقسام -->
+          <div class="bg-black/30 p-6 rounded-2xl border border-white/10 space-y-4">
+            <h4 class="font-bold text-sm sm:text-base text-purple-400 border-b border-white/5 pb-2"><i class="fas fa-th-large ml-1"></i> إضافة وإدارة الأقسام</h4>
+            <div class="space-y-3">
+              <input type="hidden" id="editSecId">
+              <input type="text" id="secName" placeholder="اسم القسم الجديد" class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg text-xs border border-purple-400">
+              
+              <div class="flex items-center justify-between gap-3">
+                <select id="secStatus" class="flex-1 bg-white text-slate-900 font-bold text-xs p-3 rounded-lg border border-purple-400">
+                  <option value="active">نشط (مفتوح)</option>
+                  <option value="frozen">تجميد (معطل مؤقتاً)</option>
+                </select>
+                <input type="password" id="secPass" placeholder="رمز قفل القسم (اختياري)" class="flex-1 bg-white text-slate-900 font-bold p-3 rounded-lg text-xs border border-purple-400">
+              </div>
 
-          <!-- Btn 2: Items Manager -->
-          <button onclick="openAdminSubModal('subModalItems')" class="glass p-6 rounded-2xl text-center hover:border-blue-500/50 transition flex flex-col items-center justify-center">
-            <i class="fas fa-laptop-code text-3xl text-blue-500 mb-3"></i>
-            <h4 class="font-bold text-sm sm:text-base">إدارة البرمجيات</h4>
-            <span class="text-[11px] text-gray-400 mt-1">إضافة تطبيقات وأدوات وصور متعددة</span>
-          </button>
+              <div class="flex gap-2">
+                <button id="btnSaveSection" class="flex-1 bg-purple-600 hover:bg-purple-700 py-3 rounded-lg font-bold text-xs text-white">حفظ القسم</button>
+                <button onclick="clearSectionFields()" class="bg-slate-700 hover:bg-slate-650 px-4 rounded-lg text-xs font-bold text-white">تصفير</button>
+              </div>
+            </div>
 
-          <!-- Btn 3: Backgrounds & UI Theme -->
-          <button onclick="openAdminSubModal('subModalBg')" class="glass p-6 rounded-2xl text-center hover:border-green-500/50 transition flex flex-col items-center justify-center">
-            <i class="fas fa-images text-3xl text-green-500 mb-3"></i>
-            <h4 class="font-bold text-sm sm:text-base">إدارة الخلفيات والواجهات</h4>
-            <span class="text-[11px] text-gray-400 mt-1">تعديل البنر والشعار الرئيسي</span>
-          </button>
+            <!-- إضافة التحكم برفع الخلفيات المخصصة للأقسام -->
+            <div class="border-t border-white/10 pt-4 mt-3">
+              <p class="text-xs text-purple-300 font-bold mb-2">إدارة خلفيات الأقسام المخصصة:</p>
+              <div class="space-y-2">
+                <!-- قسم الفلاتر -->
+                <div class="bg-slate-900 p-2.5 rounded-lg border border-white/5">
+                  <div onclick="toggleSectionBgBox('bgFiltersBox')" class="flex justify-between items-center cursor-pointer text-xs font-bold text-white">
+                    <span>خلفية قسم "الأقسام المتاحة"</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                  </div>
+                  <div id="bgFiltersBox" class="hidden mt-3 space-y-2">
+                    <input type="file" id="bgFiltersFileInput" accept="image/*" class="w-full bg-slate-800 p-2 rounded text-[10px]" onchange="uploadSectionBackground('filters', this)">
+                    <div id="preview_filters_bg" class="text-[9px] text-gray-400 truncate mt-1"></div>
+                  </div>
+                </div>
+                <!-- قسم التطبيقات -->
+                <div class="bg-slate-900 p-2.5 rounded-lg border border-white/5">
+                  <div onclick="toggleSectionBgBox('bgAppsBox')" class="flex justify-between items-center cursor-pointer text-xs font-bold text-white">
+                    <span>خلفية قسم "التطبيقات المرفوعة"</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                  </div>
+                  <div id="bgAppsBox" class="hidden mt-3 space-y-2">
+                    <input type="file" id="bgAppsFileInput" accept="image/*" class="w-full bg-slate-800 p-2 rounded text-[10px]" onchange="uploadSectionBackground('apps', this)">
+                    <div id="preview_apps_bg" class="text-[9px] text-gray-400 truncate mt-1"></div>
+                  </div>
+                </div>
+                <!-- قسم الأدوات -->
+                <div class="bg-slate-900 p-2.5 rounded-lg border border-white/5">
+                  <div onclick="toggleSectionBgBox('bgToolsBox')" class="flex justify-between items-center cursor-pointer text-xs font-bold text-white">
+                    <span>خلفية قسم "الأدوات البرمجية"</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                  </div>
+                  <div id="bgToolsBox" class="hidden mt-3 space-y-2">
+                    <input type="file" id="bgToolsFileInput" accept="image/*" class="w-full bg-slate-800 p-2 rounded text-[10px]" onchange="uploadSectionBackground('tools', this)">
+                    <div id="preview_tools_bg" class="text-[9px] text-gray-400 truncate mt-1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <!-- Btn 4: Social & Links Connection -->
-          <button onclick="openAdminSubModal('subModalSocial')" class="glass p-6 rounded-2xl text-center hover:border-pink-500/50 transition flex flex-col items-center justify-center">
-            <i class="fas fa-share-alt text-3xl text-pink-500 mb-3"></i>
-            <h4 class="font-bold text-sm sm:text-base">إدارة قنوات التواصل والاشتراك</h4>
-            <span class="text-[11px] text-gray-400 mt-1">تعديل الروابط والتحميل الإجباري</span>
-          </button>
+            <!-- قائمة الأقسام الحالية مع تعديل/حذف/تجميد -->
+            <div class="border-t border-white/10 pt-4 mt-3">
+              <p class="text-xs text-gray-400 font-bold mb-2">الأقسام الحالية المرفوعة بالفايربيز:</p>
+              <div id="adminSectionsList" class="space-y-2 max-h-48 overflow-y-auto pr-1"></div>
+            </div>
+          </div>
 
-          <!-- Btn 5: Live Notifications -->
-          <button onclick="openAdminSubModal('subModalNotif')" class="glass p-6 rounded-2xl text-center hover:border-amber-500/50 transition flex flex-col items-center justify-center">
-            <i class="fas fa-bell text-3xl text-amber-500 mb-3"></i>
-            <h4 class="font-bold text-sm sm:text-base">إرسال وإدارة الإشعارات</h4>
-            <span class="text-[11px] text-gray-400 mt-1">إرسال، بث، وحذف الإشعارات النشطة</span>
-          </button>
+          <!-- القسم الثاني: إضافة وتعديل برمجيات جديدة -->
+          <div class="bg-black/30 p-6 rounded-2xl border border-white/10 space-y-4">
+            <h4 class="font-bold text-sm sm:text-base text-blue-400 border-b border-white/5 pb-2"><i class="fas fa-laptop-code ml-1"></i> رفع وإضافة برمجية أو أداة</h4>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <input type="hidden" id="editItemId">
+              <input type="text" id="itemTitle" placeholder="اسم التطبيق أو الأداة" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+              
+              <!-- القائمة المنسدلة للأقسام من فايربيز مباشرة -->
+              <select id="itemSectionDropdown" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+                <option value="">اختر القسم المناسب...</option>
+              </select>
+
+              <select id="itemType" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+                <option value="app">تطبيق (App)</option>
+                <option value="tool">أداة (Tool)</option>
+              </select>
+              <input type="text" id="itemVersion" placeholder="إصدار التطبيق" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+              <input type="text" id="itemSize" placeholder="الحجم (ميغابايت)" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+              <input type="text" id="itemDev" placeholder="اسم المطور" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+              <input type="text" id="itemDownloadUrl" placeholder="رابط التحميل المباشر" class="bg-white text-slate-900 font-bold p-3 rounded-lg col-span-2 border border-blue-400">
+              <input type="password" id="itemPass" placeholder="رمز قفل للتطبيق (اختياري)" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+              
+              <select id="itemForceLogin" class="bg-white text-slate-900 font-bold p-3 rounded-lg border border-blue-400">
+                <option value="false">لا يشترط تسجيل دخول</option>
+                <option value="true">إجبار تسجيل الدخول للتحميل</option>
+              </select>
+              
+              <div class="col-span-2">
+                <label class="block text-[11px] text-gray-400 mb-1 font-bold">رفع صور متعددة للملف البرمجي:</label>
+                <input type="file" id="itemImgFiles" multiple class="w-full bg-slate-800 p-2.5 rounded-lg text-[10px] text-white">
+              </div>
+            </div>
+            <textarea id="itemDesc" placeholder="الوصف والمهام البرمجية..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg text-xs h-16 border border-blue-400"></textarea>
+            <textarea id="itemChangelog" placeholder="سجل التحديثات والتعديلات الأخيرة..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg text-xs h-16 border border-blue-400"></textarea>
+            
+            <div class="flex gap-2.5">
+              <button id="btnSaveSoftware" class="flex-1 bg-blue-600 hover:bg-blue-700 py-3.5 rounded-xl font-bold text-xs text-white">حفظ وتعميم البرمجية</button>
+              <button onclick="clearSoftwareFields()" class="bg-slate-700 hover:bg-slate-650 px-5 rounded-xl text-xs font-bold text-white">تصفير الخانات</button>
+            </div>
+          </div>
+
+          <!-- القسم الثالث والجديد: قسم المطور وإعدادات الاشتراكات وحسابات التواصل الاجتماعي -->
+          <div class="bg-black/30 p-6 rounded-2xl border border-white/10 space-y-4">
+            <h4 class="font-bold text-sm sm:text-base text-yellow-400 border-b border-white/5 pb-2">
+              <i class="fas fa-user-cog ml-1"></i> قسم المطور والتحكم العام
+            </h4>
+            <div class="space-y-3 text-xs">
+              <!-- إضافة إدارة أفتار الموقع بالرفع المباشر -->
+              <div class="bg-slate-900/50 p-3 rounded-xl border border-white/5 space-y-2">
+                <label class="text-gray-300 block font-bold">تغيير أفتار الموقع (Logo):</label>
+                <div class="flex items-center gap-3">
+                  <input type="file" id="siteAvatarUploadInput" accept="image/*" class="hidden" onchange="uploadSiteAvatar(this)">
+                  <button type="button" onclick="document.getElementById('siteAvatarUploadInput').click()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-3 py-2 rounded-lg text-[10px] transition">رفع أفتار جديد</button>
+                  <span id="siteAvatarStatus" class="text-[10px] text-gray-400"></span>
+                </div>
+              </div>
+
+              <!-- إضافة تعديل رقم المطور -->
+              <div>
+                <label class="text-gray-300 block mb-1 font-bold">رقم هاتف المطور (تواصل معي):</label>
+                <input type="text" id="devPhoneInput" placeholder="مثال: +966500000000" class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-purple-400">
+              </div>
+              <div>
+                <label class="text-gray-300 block mb-1 font-bold">رابط الإنستغرام:</label>
+                <input type="text" id="devInstaInput" placeholder="https://instagram.com/..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-purple-400">
+              </div>
+              <div>
+                <label class="text-gray-300 block mb-1 font-bold">رابط تيك توك:</label>
+                <input type="text" id="devTikTokInput" placeholder="https://tiktok.com/@..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-purple-400">
+              </div>
+              <div>
+                <label class="text-gray-300 block mb-1 font-bold">رابط يوتيوب:</label>
+                <input type="text" id="devYoutubeInput" placeholder="https://youtube.com/..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-purple-400">
+              </div>
+              <div>
+                <label class="text-gray-300 block mb-1 font-bold">رابط فيسبوك:</label>
+                <input type="text" id="devFbInput" placeholder="https://facebook.com/..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-purple-400">
+              </div>
+              <div>
+                <label class="text-gray-300 block mb-1 font-bold">رابط قناة الواتساب (للاشتراك الإجباري):</label>
+                <input type="text" id="devWhatsappChannelInput" placeholder="https://whatsapp.com/channel/..." class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-purple-400">
+              </div>
+              <div class="pt-2 border-t border-white/5">
+                <label class="text-yellow-400 font-black block mb-2">الاشتراك الإجباري التوهيمي:</label>
+                <select id="forceSubStatus" class="w-full bg-white text-slate-900 font-bold p-3 rounded-lg border border-yellow-500">
+                  <option value="false">تعطيل الاشتراك الإجباري</option>
+                  <option value="true">تفعيل الاشتراك الإجباري قبل التحميل</option>
+                </select>
+              </div>
+
+              <button id="btnSaveDeveloperSettings" class="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-950 py-3.5 rounded-xl font-black transition">
+                حفظ حسابات المطور والاشتراكات
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- الجزء الرابع: قائمة البرمجيات المرفوعة مع فلترة ومحرك بحث للتحكم الفوري -->
+        <div class="bg-black/30 p-6 rounded-2xl border border-white/10 space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-white/5 pb-3">
+            <h4 class="font-bold text-sm sm:text-base text-yellow-500"><i class="fas fa-folder-open ml-1"></i> إدارة وتعديل كافة التطبيقات الحالية</h4>
+            <div class="flex items-center bg-white px-3 py-1.5 rounded-lg border border-purple-400 w-full sm:w-64">
+              <i class="fas fa-search text-slate-750 ml-2 text-xs"></i>
+              <input type="text" id="adminSearchItem" oninput="runAdminItemsSearch(this.value)" placeholder="ابحث في التطبيقات لـ تعديل/حذف..." class="bg-transparent text-xs text-slate-900 focus:outline-none font-black w-full">
+            </div>
+          </div>
+          <div id="adminItemsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-h-[350px] overflow-y-auto pr-1"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- ADMIN SUB-MODALS (POPUP BOXES) -->
-  <!-- ============================================== -->
-
-  <!-- Modal 1: Sections Manager -->
-  <div id="subModalSections" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 hidden">
-    <div class="glass w-full max-w-lg p-6 sm:p-8 rounded-2xl space-y-5">
-      <div class="flex justify-between items-center border-b border-white/10 pb-3">
-        <h4 class="font-bold text-base sm:text-lg"><i class="fas fa-th-large text-purple-400"></i> إدارة الأقسام</h4>
-        <button onclick="closeAdminSubModal('subModalSections')" class="text-red-400"><i class="fas fa-times-circle text-xl"></i></button>
-      </div>
-      <div class="space-y-4">
-        <input type="text" id="secName" placeholder="اسم القسم" class="w-full bg-slate-800 p-3 rounded-lg text-sm text-white">
-        <input type="text" id="secSlug" placeholder="Slug فريد (الرمز الفرعي للرابط)" class="w-full bg-slate-800 p-3 rounded-lg text-sm text-white">
-        <div class="flex items-center justify-between">
-          <label class="text-sm text-gray-300 font-semibold">حالة القسم:</label>
-          <select id="secStatus" class="bg-slate-800 text-sm p-3 rounded-lg text-white font-bold">
-            <option value="active">تشغيل (نشط)</option>
-            <option value="inactive">إيقاف (معطل)</option>
-          </select>
-        </div>
-        <button onclick="addDynamicSection()" class="w-full bg-purple-600 py-3 rounded-lg font-extrabold text-sm text-white">حفظ القسم</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 2: Items & Multi-Photo Manager -->
-  <div id="subModalItems" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 hidden">
-    <div class="glass w-full max-w-2xl p-6 sm:p-8 rounded-2xl space-y-5 max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-between items-center border-b border-white/10 pb-3">
-        <h4 class="font-bold text-base sm:text-lg"><i class="fas fa-laptop-code text-blue-400"></i> إدارة البرمجيات والمشاريع</h4>
-        <button onclick="closeAdminSubModal('subModalItems')" class="text-red-400"><i class="fas fa-times-circle text-xl"></i></button>
+  <!-- Details Multi-Slider Modal -->
+  <div id="detailsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div id="detailsModalBox" class="glass-heavy rounded-3xl w-full max-w-2xl overflow-y-auto max-h-[90vh] p-6 sm:p-8 text-slate-100">
+      <div class="flex justify-between items-start border-b border-white/10 pb-4 mb-5">
+        <h3 id="modalItemTitle" class="text-xl sm:text-2xl font-black">العنوان</h3>
+        <button onclick="closeDetailsModal()" class="text-gray-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-        <input type="text" id="itemTitle" placeholder="اسم البرمجية" class="bg-slate-800 p-3 rounded-lg text-white">
-        <select id="itemType" class="bg-slate-800 p-3 rounded-lg text-white font-semibold">
-          <option value="app">تطبيق (App)</option>
-          <option value="tool">أداة (Tool)</option>
-        </select>
-        <div>
-          <label class="block text-xs text-gray-300 mb-1 font-bold">رفع صور متعددة (تقليب شي إن):</label>
-          <input type="file" id="itemImgFiles" multiple class="w-full bg-slate-800 p-2.5 rounded-lg text-xs">
-        </div>
-        <input type="text" id="itemSection" placeholder="اسم قسم الـ Slug" class="bg-slate-800 p-3 rounded-lg text-white">
-        <input type="text" id="itemVersion" placeholder="الاصدار" class="bg-slate-800 p-3 rounded-lg text-white">
-        <input type="text" id="itemSize" placeholder="الحجم" class="bg-slate-800 p-3 rounded-lg text-white">
-        <input type="text" id="itemDev" placeholder="المطور" class="bg-slate-800 p-3 rounded-lg text-white">
-        <input type="text" id="itemDownloadUrl" placeholder="رابط التحميل" class="bg-slate-800 p-3 rounded-lg text-white">
-        <select id="itemStatus" class="bg-slate-800 p-3 rounded-lg text-white font-semibold">
-          <option value="active">تشغيل</option>
-          <option value="inactive">إيقاف</option>
-        </select>
+      <div class="relative w-full h-72 rounded-2xl overflow-hidden bg-slate-900 mb-6">
+        <img id="modalSliderImg" src="" class="w-full h-full object-cover">
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg"><i class="fas fa-chevron-right"></i></button>
+        <div id="sliderIndexText" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-1.5 rounded-full text-xs text-white">1 / 1</div>
       </div>
-      <textarea id="itemDesc" placeholder="الوصف الكامل" class="w-full bg-slate-800 p-3 rounded-lg text-sm h-20 text-white"></textarea>
-      <textarea id="itemChangelog" placeholder="سجل التحديثات" class="w-full bg-slate-800 p-3 rounded-lg text-sm h-20 text-white"></textarea>
-      <button onclick="saveSoftwareItemWithAutoUpload()" id="btnSaveSoftware" class="w-full bg-blue-600 py-3 rounded-lg text-sm font-extrabold text-white">رفع صور ونشر العنصر</button>
-    </div>
-  </div>
 
-  <!-- Modal 3: Backgrounds & UI Theme -->
-  <div id="subModalBg" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 hidden">
-    <div class="glass w-full max-w-lg p-6 sm:p-8 rounded-2xl space-y-5 max-h-[85vh] overflow-y-auto">
-      <div class="flex justify-between items-center border-b border-white/10 pb-3">
-        <h4 class="font-bold text-base sm:text-lg"><i class="fas fa-images text-green-400"></i> إدارة وتعديل الخلفيات والواجهات</h4>
-        <button onclick="closeAdminSubModal('subModalBg')" class="text-red-400"><i class="fas fa-times-circle text-xl"></i></button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm bg-black/30 p-5 rounded-2xl mb-6">
+        <div><span class="text-gray-400">الإصدار:</span> <span id="modalItemVersion" class="font-bold text-white"></span></div>
+        <div><span class="text-gray-400">الحجم:</span> <span id="modalItemSize" class="font-bold text-white"></span></div>
+        <div><span class="text-gray-400">المطور:</span> <span id="modalItemDeveloper" class="font-bold text-white"></span></div>
+        <p class="text-gray-300 col-span-2 mt-2 leading-relaxed font-semibold" id="modalItemDesc"></p>
       </div>
       
-      <div class="space-y-4 text-sm">
-        <div>
-          <label class="text-gray-300 block mb-1 font-bold">تعديل جملة الـ Hero الترحيبية:</label>
-          <input type="text" id="adminHeroTitleInput" placeholder="ابتكار الأدوات التي تسهل..." class="w-full bg-slate-800 p-3 rounded-lg text-white">
-        </div>
-        <div>
-          <label class="text-gray-300 block mb-1 font-bold">تعديل البيو الترحيبي (Hero Bio):</label>
-          <textarea id="adminHeroBioInput" placeholder="مرحباً بكم في معرض أعمالي..." class="w-full bg-slate-800 p-3 rounded-lg text-white h-20"></textarea>
-        </div>
-        <hr class="border-white/10">
-        <div>
-          <label class="text-gray-300 block mb-1 font-bold">رفع أفتار الموقع (شعار دائري):</label>
-          <input type="file" id="adminSiteLogoFile" class="w-full bg-slate-800 p-2.5 rounded-lg text-xs">
-        </div>
-        <div>
-          <label class="text-gray-300 block mb-1 font-bold">رفع البنر الرئيسي للواجهة:</label>
-          <input type="file" id="adminBannerFile" class="w-full bg-slate-800 p-2.5 rounded-lg text-xs">
-        </div>
-        <hr class="border-white/10">
-        <div>
-          <label class="text-purple-400 font-bold block mb-1">خلفية خاصة لقسم معين:</label>
-          <input type="text" id="targetSecSlugBg" placeholder="ضع هنا الـ Slug الخاص بالقسم" class="w-full bg-slate-800 p-3 rounded-lg mt-1 text-sm text-white">
-          <input type="file" id="targetSecFileBg" class="w-full bg-slate-800 p-2.5 rounded-lg mt-2 text-xs">
-        </div>
-        <button onclick="saveUIVisuals()" id="btnSaveUI" class="w-full bg-green-600 py-3 rounded-lg font-extrabold text-sm text-white">حفظ وتعميم التغييرات</button>
+      <div class="mb-6">
+        <h4 class="font-extrabold text-sm mb-2">سجل التحديثات (Changelog):</h4>
+        <pre id="modalItemChangelog" class="bg-black/50 p-4 rounded-xl text-xs overflow-x-auto text-gray-300 font-mono whitespace-pre-wrap leading-relaxed"></pre>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button onclick="closeDetailsModal()" class="px-5 py-3 rounded-xl text-xs font-bold border border-white/10 hover:bg-white/5">إغلاق</button>
+        <button id="modalDownloadBtn" class="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-xl text-xs font-black text-white flex items-center gap-2">
+          <i class="fas fa-download"></i> بدء التحميل والتجهيز
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Modal 4: Social Connections -->
-  <div id="subModalSocial" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 hidden">
-    <div class="glass w-full max-w-lg p-6 sm:p-8 rounded-2xl space-y-5">
-      <div class="flex justify-between items-center border-b border-white/10 pb-3">
-        <h4 class="font-bold text-base sm:text-lg"><i class="fas fa-share-alt text-pink-400"></i> إدارة الاشتراك والتواصل</h4>
-        <button onclick="closeAdminSubModal('subModalSocial')" class="text-red-400"><i class="fas fa-times-circle text-xl"></i></button>
-      </div>
-      
-      <div class="space-y-4 text-sm">
-        <input type="text" id="adminForceChannel" placeholder="رابط الاشتراك الإجباري" class="w-full bg-slate-800 p-3 rounded-lg text-white">
-        <input type="text" id="devPhone" placeholder="رقم واتساب المطور" class="w-full bg-slate-800 p-3 rounded-lg text-white">
-        <div class="border-t border-white/10 pt-3">
-          <p class="font-extrabold text-xs mb-2 text-pink-300">إضافة قناة تواصل إضافية:</p>
-          <input type="text" id="newChanName" placeholder="اسم القناة" class="w-full bg-slate-800 p-3 rounded-lg mb-2 text-white">
-          <input type="text" id="newChanLink" placeholder="الرابط" class="w-full bg-slate-800 p-3 rounded-lg text-white">
-        </div>
-        <button onclick="saveSocialSettings()" class="w-full bg-pink-600 py-3 rounded-lg font-extrabold text-sm text-white">تحديث إعدادات التواصل</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 5: Live Notifications Manager (Multi-Notifications Update & Delete list) -->
-  <div id="subModalNotif" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 hidden">
-    <div class="glass w-full max-w-2xl p-6 sm:p-8 rounded-2xl space-y-5 max-h-[85vh] overflow-y-auto">
-      <div class="flex justify-between items-center border-b border-white/10 pb-3">
-        <h4 class="font-bold text-base sm:text-lg"><i class="fas fa-bell text-amber-400"></i> بث وإدارة الإشعارات</h4>
-        <button onclick="closeAdminSubModal('subModalNotif')" class="text-red-400"><i class="fas fa-times-circle text-xl"></i></button>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- قسم إضافة إشعار جديد -->
-        <div class="space-y-4 text-sm border-b md:border-b-0 md:border-l border-white/10 pb-6 md:pb-0 md:pl-6">
-          <h5 class="font-bold text-purple-400 border-b border-white/5 pb-2">إنشاء إشعار تفاعلي جديد</h5>
-          <input type="text" id="notifTitle" placeholder="عنوان الإشعار" class="w-full bg-slate-800 p-3 rounded-lg text-white">
-          <textarea id="notifBody" placeholder="نص الإشعار والتنبيه..." class="w-full bg-slate-800 p-3 rounded-lg h-20 text-white"></textarea>
-          
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="text-gray-300 text-xs font-bold">لون الخلفية:</label>
-              <input type="color" id="notifBgColor" value="#7c3aed" class="w-full h-10 bg-slate-800 p-1.5 rounded-lg mt-1 cursor-pointer">
-            </div>
-            <div>
-              <label class="text-gray-300 text-xs font-bold">لون النص:</label>
-              <input type="color" id="notifTextColor" value="#ffffff" class="w-full h-10 bg-slate-800 p-1.5 rounded-lg mt-1 cursor-pointer">
-            </div>
-          </div>
-
-          <div>
-            <label class="text-gray-300 text-xs font-bold">رفع صورة جانبية للإشعار:</label>
-            <input type="file" id="notifImgFile" class="w-full bg-slate-800 p-2.5 rounded-lg mt-1 text-xs">
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="text-gray-300 text-xs font-bold">شكل الإشعار:</label>
-              <select id="notifShape" class="w-full bg-slate-800 p-3 rounded-lg text-white mt-1 font-semibold">
-                <option value="rounded-xl">حواف دائرية</option>
-                <option value="rounded-full">دائري كامل</option>
-                <option value="rounded-none">زوايا حادة</option>
-              </select>
-            </div>
-            <div>
-              <label class="text-gray-300 text-xs font-bold">تكرار الإشعار:</label>
-              <select id="notifSchedule" class="w-full bg-slate-800 p-3 rounded-lg text-white mt-1 font-semibold">
-                <option value="once_per_entry">يظهر فقط عند دخول الموقع من جديد</option>
-                <option value="immediate">يظهر فوري الآن (تكرار مستمر)</option>
-                <option value="once_a_day">يظهر مرة واحدة في اليوم فقط</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="text-gray-300 text-xs font-bold">مدة الظهور بالشاشة (بالثواني):</label>
-              <input type="number" id="notifDuration" value="6" min="2" class="w-full bg-slate-800 p-3 rounded-lg text-white mt-1">
-            </div>
-            <div>
-              <label class="text-gray-300 text-xs font-bold">تأخير بدء الإشعار (بالثواني):</label>
-              <input type="number" id="notifDelay" value="0" min="0" class="w-full bg-slate-800 p-3 rounded-lg text-white mt-1">
-            </div>
-          </div>
-          
-          <button onclick="publishCustomNotification()" id="btnSaveNotif" class="w-full bg-amber-600 py-3 rounded-lg font-extrabold text-sm text-white">بث ونشر هذا الإشعار</button>
-        </div>
-
-        <!-- قسم إدارة الإشعارات الحالية والتحكم بها وحذفها -->
-        <div class="space-y-4">
-          <h5 class="font-bold text-amber-400 border-b border-white/5 pb-2">قائمة الإشعارات الحالية</h5>
-          <div id="adminNotificationsList" class="space-y-3 max-h-[400px] overflow-y-auto pr-2">
-            <!-- سيتم حقن قائمة الاشعارات هنا برمجياً -->
-            <p class="text-xs text-gray-400 text-center py-6">جاري تحميل قائمة الإشعارات النشطة...</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ============================================== -->
-  <!-- FIREBASE ENGINE & WEB CORE (STABILIZED) -->
-  <!-- ============================================== -->
+  <!-- Firebase Setup & JS Core -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
     import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+    import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
-    // Configuration for Firebase
+    // تكوين وربط Firebase بقواعد البيانات
     const firebaseConfig = {
       apiKey: "AIzaSyA7hCLy2CSw_Dk7YsHL3N13jta0Azr7org",
       authDomain: "arashibank-56a1f.firebaseapp.com",
@@ -564,578 +602,858 @@
       measurementId: "G-7CB0474RZK"
     };
 
-    // Initialize Firebase Services
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-    // Globals
-    let isAdminAuthenticated = false;
-    let forceSubscriptionUrl = "https://youtube.com/@yamidev";
-    let activeDownloadUrl = "";
-    
-    // Slider state
+    // متغيرات الحالة العامة
+    let globalSections = [];
+    let globalItems = [];
     let activeImages = [];
     let activeImgIndex = 0;
+    let loggedInUser = null;
+    let tempGoogleUser = null; 
+    let selectedItemForDownload = null; // للاحتفاظ بالملف المعلق بانتظار التحقق من الاشتراك الإجباري
+    const IMGBB_KEY = "78c14f17d577c600d7a91a3e0cb59ec5";
 
-    // Splash Screen Control
+    // تمكين زر فتح المنصة بمجرد اكتمال الجلب
+    async function initPlatform() {
+      try {
+        await fetchGeneralSettings();
+        await fetchDeveloperSettings(); // جلب روابط حسابات المطور والاشتراكات
+        await fetchSectionBackgrounds(); // جلب الخلفيات المخصصة للأقسام
+        await fetchAndRenderSections();
+        await fetchAndRenderSoftware();
+        
+        document.getElementById('loaderStatus').innerHTML = `
+          <i class="fas fa-check-circle text-green-400 text-3xl animate-bounce"></i>
+          <span class="text-xs text-green-400 font-bold">تم اكتمال التحميل بنجاح! ✨</span>
+        `;
+        const splashBtn = document.getElementById('splashBtn');
+        splashBtn.disabled = false;
+        splashBtn.innerText = "دخول المنصة";
+        splashBtn.className = "w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black py-4 rounded-xl text-base transition shadow-lg animate-pulse cursor-pointer";
+
+        checkSavedUserSession();
+
+        // التقاط مستخدم جوجل التلقائي بعد العودة من إعادة التوجيه
+        getRedirectResult(auth)
+          .then((result) => {
+            if (result && result.user) {
+              tempGoogleUser = result.user;
+              document.getElementById('googleAuthStep').classList.add('hidden');
+              document.getElementById('userFieldsStep').classList.remove('hidden');
+              document.getElementById('userInputName').value = tempGoogleUser.displayName || "";
+              openLoginModal();
+            }
+          }).catch((error) => {
+            console.error("خطأ أثناء معالجة تسجيل دخول Google:", error);
+          });
+
+      } catch (e) {
+        console.error("Firebase connection error:", e);
+        document.getElementById('loaderText').innerText = "حدث خطأ في الاتصال، يرجى المحاولة لاحقاً.";
+      }
+    }
+
+    // إغلاق الشاشة الترحيبية الدينية
     window.dismissSplash = () => {
       const splash = document.getElementById('welcomeSplash');
       splash.classList.add('opacity-0', 'pointer-events-none');
       document.body.classList.remove('overflow-hidden');
-      setTimeout(() => splash.remove(), 700);
+      setTimeout(() => {
+        splash.remove();
+        document.getElementById('statsBanner').classList.remove('hidden');
+      }, 700);
     };
 
-    // Auto trigger button enable inside loader
-    setTimeout(() => {
-      const splashBtn = document.getElementById('splashBtn');
-      if (splashBtn) splashBtn.classList.add('pulseGlow');
-    }, 1500);
+    window.closeStatsBanner = () => {
+      document.getElementById('statsBanner').classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => document.getElementById('statsBanner').remove(), 500);
+    };
 
-    // Toggle Admin Panel (Inline Box style)
+    window.toggleSidebar = (show) => {
+      const menu = document.getElementById('sidebarMenu');
+      if(show) {
+        menu.classList.remove('translate-x-full');
+      } else {
+        menu.classList.add('translate-x-full');
+      }
+    };
+
+    window.changeThemeMode = (mode) => {
+      const body = document.getElementById('mainBody');
+      body.className = "text-slate-100 min-h-screen transition-all duration-400";
+      if(mode === 'cyberpunk') body.classList.add('bg-cyberpunk');
+      if(mode === 'golden') body.classList.add('bg-golden');
+      if(mode === 'neon') body.classList.add('bg-neon');
+    };
+
+    async function fetchGeneralSettings() {
+      const docRef = doc(db, "settings", "general");
+      const snap = await getDoc(docRef);
+      if(snap.exists()) {
+        const data = snap.data();
+        document.getElementById('siteName').innerText = data.name || "Yami Dev";
+        
+        // تحديث رقم هاتف المطور بالحقل
+        document.getElementById('devPhoneInput').value = data.devPhone || "";
+        
+        // تعديل الرقم ليكون بالصيغة الدولية المطلوبة في السايدبار
+        const verifiedPhone = data.devPhone ? (data.devPhone.startsWith('+') ? data.devPhone : `+${data.devPhone}`) : "+966500000000";
+        document.getElementById('sidebarWhatsapp').href = `https://wa.me/${verifiedPhone}`;
+        document.getElementById('sidebarYoutube').href = data.forceChannel || "https://youtube.com/@yamidev";
+        
+        document.getElementById('heroTitle').innerHTML = data.heroTitle || "ابتكار البرمجيات والأدوات الذكية المساعدة";
+        document.getElementById('heroBio').innerText = data.heroBio || "منصتك البرمجية المتكاملة لتسهيل وتجويد أعمالك الرقمية.";
+        
+        // تحديث الأفتار (Logo) وFavicon ديناميكياً
+        if(data.siteAvatar) {
+          document.getElementById('siteLogo').src = data.siteAvatar;
+          let favicon = document.querySelector("link[rel*='icon']");
+          if (!favicon) {
+            favicon = document.createElement('link');
+            favicon.rel = 'shortcut icon';
+            document.getElementsByTagName('head')[0].appendChild(favicon);
+          }
+          favicon.href = data.siteAvatar;
+        }
+      }
+    }
+
+    // ==============================================
+    // جلب وحفظ بيانات قسم المطور الجديد بفايربيز
+    // ==============================================
+    async function fetchDeveloperSettings() {
+      const docRef = doc(db, "settings", "developer");
+      const snap = await getDoc(docRef);
+      if(snap.exists()) {
+        const data = snap.data();
+        // ملء قيم الإدخال في الإدارة
+        document.getElementById('devInstaInput').value = data.instagram || "";
+        document.getElementById('devTikTokInput').value = data.tiktok || "";
+        document.getElementById('devYoutubeInput').value = data.youtube || "";
+        document.getElementById('devFbInput').value = data.facebook || "";
+        document.getElementById('devWhatsappChannelInput').value = data.whatsappChannel || "";
+        document.getElementById('forceSubStatus').value = data.forceSub === true ? "true" : "false";
+
+        // تطبيق الروابط على أيقونات التواصل الاجتماعي بالسايد بار
+        if(data.instagram) document.getElementById('devInstagram').href = data.instagram;
+        if(data.tiktok) document.getElementById('devTikTok').href = data.tiktok;
+        if(data.youtube) document.getElementById('devYoutube').href = data.youtube;
+        if(data.facebook) document.getElementById('devFacebook').href = data.facebook;
+        if(data.whatsappChannel) document.getElementById('verificationSubLink').href = data.whatsappChannel;
+      }
+    }
+
+    // جلب وتطبيق خلفيات الأقسام المخصصة
+    async function fetchSectionBackgrounds() {
+      const docRef = doc(db, "settings", "sectionBackgrounds");
+      const snap = await getDoc(docRef);
+      if(snap.exists()) {
+        const data = snap.data();
+        if(data.filters) {
+          document.getElementById('sectionsFilterSection').style.backgroundImage = `url('${data.filters}')`;
+          document.getElementById('preview_filters_bg').innerText = data.filters;
+        }
+        if(data.apps) {
+          document.getElementById('apps').style.backgroundImage = `url('${data.apps}')`;
+          document.getElementById('preview_apps_bg').innerText = data.apps;
+        }
+        if(data.tools) {
+          document.getElementById('tools').style.backgroundImage = `url('${data.tools}')`;
+          document.getElementById('preview_tools_bg').innerText = data.tools;
+        }
+      }
+    }
+
+    document.getElementById('btnSaveDeveloperSettings').onclick = async () => {
+      const instagram = document.getElementById('devInstaInput').value.trim();
+      const tiktok = document.getElementById('devTikTokInput').value.trim();
+      const youtube = document.getElementById('devYoutubeInput').value.trim();
+      const facebook = document.getElementById('devFbInput').value.trim();
+      const whatsappChannel = document.getElementById('devWhatsappChannelInput').value.trim();
+      const forceSub = document.getElementById('forceSubStatus').value === "true";
+      const devPhone = document.getElementById('devPhoneInput').value.trim();
+
+      const devData = { instagram, tiktok, youtube, facebook, whatsappChannel, forceSub };
+
+      // حفظ بيانات المطور
+      await setDoc(doc(db, "settings", "developer"), devData, { merge: true });
+      
+      // حفظ رقم المطور في الإعدادات العامة
+      await setDoc(doc(db, "settings", "general"), { devPhone }, { merge: true });
+      
+      alert("تم حفظ حساباتك ورقم المطور والاشتراكات بنجاح وتطبيقها على الموقع! 👑");
+      await fetchGeneralSettings();
+      await fetchDeveloperSettings();
+    };
+
+    // ==============================================
+    // دوال إدارة ورفع الأفتار وخلفيات الأقسام ديناميكياً
+    // ==============================================
+    window.toggleSectionBgBox = (boxId) => {
+      const box = document.getElementById(boxId);
+      box.classList.toggle('hidden');
+    };
+
+    window.uploadSiteAvatar = async (input) => {
+      const file = input.files[0];
+      if(!file) return;
+
+      const status = document.getElementById('siteAvatarStatus');
+      status.innerText = "جاري رفع الأفتار...";
+
+      const uploadedUrl = await uploadSingleFileToImgBB(file);
+      if(uploadedUrl) {
+        await setDoc(doc(db, "settings", "general"), { siteAvatar: uploadedUrl }, { merge: true });
+        status.innerText = "تم الرفع بنجاح!";
+        await fetchGeneralSettings();
+        alert("تم تعديل أفتار الموقع الرسمي وتطبيقه بنجاح! ✨");
+      } else {
+        status.innerText = "فشل الرفع!";
+      }
+    };
+
+    window.uploadSectionBackground = async (sectionKey, input) => {
+      const file = input.files[0];
+      if(!file) return;
+
+      const previewContainer = document.getElementById(`preview_${sectionKey}_bg`);
+      previewContainer.innerText = "جاري رفع الخلفية المخصصة...";
+
+      const uploadedUrl = await uploadSingleFileToImgBB(file);
+      if(uploadedUrl) {
+        await setDoc(doc(db, "settings", "sectionBackgrounds"), { [sectionKey]: uploadedUrl }, { merge: true });
+        previewContainer.innerText = uploadedUrl;
+        await fetchSectionBackgrounds();
+        alert(`تم رفع وتحديث خلفية قسم [${sectionKey}] بنجاح! 🖼️`);
+      } else {
+        previewContainer.innerText = "فشل الرفع!";
+      }
+    };
+
+    // ==============================================
+    // 7. GOOGLE AUTH & DIRECT UPLOADS IMGBB
+    // ==============================================
+    window.openLoginModal = () => {
+      document.getElementById('loginModal').classList.remove('hidden');
+    };
+    window.closeLoginModal = () => {
+      document.getElementById('loginModal').classList.add('hidden');
+    };
+
+    // ربط الحساب بجوجل بنظام إعادة توجيه لمنع ظهور الصفحة البيضاء
+    document.getElementById('googlePrimaryBtn').onclick = async () => {
+      try {
+        await signInWithRedirect(auth, provider);
+      } catch (e) {
+        alert("فشل بدء تسجيل الدخول: " + e.message);
+      }
+    };
+
+    // معالجة وحفظ بيانات المستخدم المخصصة
+    window.registerAndCustomizeUser = async () => {
+      const name = document.getElementById('userInputName').value.trim();
+      const bgFile = document.getElementById('userInputBgFile').files[0];
+      const musicFile = document.getElementById('userInputMusicFile').files[0];
+      const saveBtn = document.getElementById('saveCustomizeBtn');
+
+      if(!name) {
+        alert("يرجى إدخال الاسم المفضل لك!");
+        return;
+      }
+
+      saveBtn.innerText = "جاري رفع ملفاتك المخصصة وتطبيق التعديل...";
+      saveBtn.disabled = true;
+
+      let uploadedBgUrl = "";
+      let uploadedMusicUrl = "";
+
+      // رفع صورة الخلفية مباشرة إلى ImgBB
+      if(bgFile) {
+        uploadedBgUrl = await uploadSingleFileToImgBB(bgFile);
+      }
+
+      // رفع ملف الموسيقى مباشرة
+      if(musicFile) {
+        uploadedMusicUrl = await uploadSingleFileToImgBB(musicFile);
+      }
+
+      loggedInUser = {
+        uid: tempGoogleUser ? tempGoogleUser.uid : "offline-user",
+        email: tempGoogleUser ? tempGoogleUser.email : "",
+        name: name,
+        userBg: uploadedBgUrl,
+        userMusic: uploadedMusicUrl
+      };
+
+      localStorage.setItem('yami_user', JSON.stringify(loggedInUser));
+      applyUserCustomization();
+      closeLoginModal();
+
+      alert(`نورت الموقع يا ${name} 👋✨`);
+      saveBtn.innerText = "تحديث وتطبيق التخصيص الشخصي ✨";
+      saveBtn.disabled = false;
+    };
+
+    async function uploadSingleFileToImgBB(file) {
+      const formData = new FormData();
+      formData.append("image", file);
+      try {
+        const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`, {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+        if(data.success) {
+          return data.data.url;
+        }
+      } catch(e) {
+        console.error("Upload error: ", e);
+      }
+      return "";
+    }
+
+    function checkSavedUserSession() {
+      const saved = localStorage.getItem('yami_user');
+      if(saved) {
+        loggedInUser = JSON.parse(saved);
+        applyUserCustomization();
+        triggerWelcomeToast(loggedInUser.name);
+      }
+    }
+
+    function applyUserCustomization() {
+      if(!loggedInUser) return;
+      
+      document.getElementById('userProfileArea').innerHTML = `
+        <div class="flex items-center gap-2 bg-purple-600/20 px-4 py-2 rounded-xl border border-purple-500/30">
+          <span class="w-2.5 h-2.5 bg-green-400 rounded-full animate-ping"></span>
+          <span class="text-xs sm:text-sm font-black text-white">${loggedInUser.name}</span>
+          <button onclick="logoutUser()" class="text-red-400 hover:text-red-300 mr-2 text-xs" title="تسجيل الخروج"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+      `;
+
+      // تطبيق الخلفيات الفائقة والبارزة في الأقسام
+      if(loggedInUser.userBg) {
+        const bgBlob = document.getElementById('sectionBgBlob');
+        bgBlob.style.backgroundImage = `url('${loggedInUser.userBg}')`;
+        bgBlob.style.opacity = "0.6"; 
+        
+        // إبراز الخلفيات في كافة الكروت والأركان واللوحات الجانبية
+        document.querySelectorAll('.glass-heavy').forEach(el => {
+          el.style.backgroundImage = `linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('${loggedInUser.userBg}')`;
+          el.style.backgroundSize = 'cover';
+          el.style.backgroundPosition = 'center';
+        });
+      }
+
+      // تشغيل الموسيقى الصوتية المفضلة
+      if(loggedInUser.userMusic) {
+        let audioContainer = document.getElementById('userAudioPlayer');
+        if(!audioContainer) {
+          audioContainer = document.createElement('audio');
+          audioContainer.id = 'userAudioPlayer';
+          audioContainer.autoplay = true;
+          audioContainer.loop = true;
+          audioContainer.volume = 0.5;
+          document.body.appendChild(audioContainer);
+        }
+        audioContainer.src = loggedInUser.userMusic;
+      }
+    }
+
+    window.logoutUser = () => {
+      localStorage.removeItem('yami_user');
+      loggedInUser = null;
+      location.reload();
+    };
+
+    function triggerWelcomeToast(name) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = "glass-heavy p-5 rounded-2xl flex items-center gap-3 border border-yellow-500/30 pointer-events-auto transition-all transform translate-x-[-150%]";
+      toast.style.backgroundColor = "rgba(124, 58, 237, 0.95)";
+      toast.innerHTML = `
+        <div class="bg-yellow-500 text-slate-900 w-9 h-9 rounded-full flex items-center justify-center font-black"><i class="fas fa-magic"></i></div>
+        <div>
+          <h5 class="font-extrabold text-sm text-white">نورت الموقع يا ${name} 👋✨</h5>
+          <p class="text-xs text-gray-200 mt-0.5">تم تفعيل كافة خلفياتك وأصواتك المخصصة.</p>
+        </div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => toast.style.transform = "translateX(0)", 100);
+      setTimeout(() => {
+        toast.style.transform = "translateX(-150%)";
+        setTimeout(() => toast.remove(), 500);
+      }, 6000);
+    }
+
+    // ==============================================
+    // 8. ♕ ADMIN AREA & CORRECTING INPUT FIELD TEXTS ♕
+    // ==============================================
     window.toggleAdminPanel = () => {
       const panel = document.getElementById('adminPanel');
       panel.classList.toggle('hidden');
-      if (!panel.classList.contains('hidden')) {
+      if(!panel.classList.contains('hidden')) {
         panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
 
-    window.authenticateAdmin = () => {
-      const pin = document.getElementById('adminPassInput').value;
-      if(pin === "yami2026") {
-        isAdminAuthenticated = true;
+    // الدخول بكلمة المرور الثابتة yami2026 فقط
+    document.getElementById('adminLoginButton').onclick = async () => {
+      const pass = document.getElementById('adminPassField').value.trim();
+
+      if(!pass) {
+        alert("يرجى إدخال الرمز السري للإدارة!");
+        return;
+      }
+
+      if(pass === "yami2026") {
         document.getElementById('adminAuthBox').classList.add('hidden');
         document.getElementById('adminControlsBox').classList.remove('hidden');
-        // تحميل الإشعارات النشطة للتحكم بها فور تسجيل الدخول للوحة الإدارة
-        loadAdminNotificationsList();
+        renderAdminLists();
+        alert("تم الدخول بنجاح يا مبرمجنا المبدع Yami 👋👑");
       } else {
-        alert("رمز المسؤول غير صحيح!");
+        alert("الرمز السري المكتوب غير صحيح!");
       }
     };
 
-    window.openAdminSubModal = (id) => {
-      document.getElementById(id).classList.remove('hidden');
-    };
-
-    window.closeAdminSubModal = (id) => {
-      document.getElementById(id).classList.add('hidden');
-    };
-
-    // Eye Care Filter Toggle
-    window.toggleEyeCare = () => {
-      const body = document.getElementById('mainBody');
-      body.classList.toggle('eye-care-active');
-      const active = body.classList.contains('eye-care-active');
-      localStorage.setItem('eyeCare', active ? 'enabled' : 'disabled');
-    };
-
-    // Load Eye Care State from Storage
-    if(localStorage.getItem('eyeCare') === 'enabled') {
-      document.getElementById('mainBody').classList.add('eye-care-active');
+    function renderAdminLists() {
+      renderAdminSections();
+      renderAdminSoftware();
     }
 
-    // Direct Image Upload to ImgBB
-    async function uploadSingleFile(file) {
-      if(!file) return null;
-      const formData = new FormData();
-      formData.append("image", file);
+    // إدارة وجلب الأقسام
+    async function fetchAndRenderSections() {
+      const snap = await getDocs(collection(db, "sections"));
+      globalSections = [];
+      snap.forEach(d => {
+        globalSections.push({ id: d.id, ...d.data() });
+      });
 
-      try {
-        const response = await fetch("https://api.imgbb.com/1/upload?key=78c14f17d577c600d7a91a3e0cb59ec5", {
-          method: "POST",
-          body: formData
-        });
-        const data = await response.json();
-        return data.success ? data.data.url : null;
-      } catch(e) {
-        console.error(e);
-        return null;
-      }
-    }
+      const container = document.getElementById('sectionsFilterContainer');
+      container.innerHTML = `<button onclick="filterDynamicContent('all')" class="bg-purple-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition">الكل</button>`;
+      
+      const dropdown = document.getElementById('itemSectionDropdown');
+      dropdown.innerHTML = `<option value="">اختر القسم المناسب...</option>`;
 
-    // Fetch site configurations
-    async function fetchGlobalSettings() {
-      try {
-        const docRef = doc(db, "settings", "general");
-        const docSnap = await getDoc(docRef);
-        if(docSnap.exists()) {
-          const settings = docSnap.data();
-          document.getElementById('siteName').innerText = settings.name || 'Yami Dev';
-          document.getElementById('siteLogo').src = settings.logo || 'https://i.ibb.co/68fDygm/yamidevlolgo.png';
-          forceSubscriptionUrl = settings.forceChannel || "https://youtube.com/@yamidev";
-          
-          if(settings.banner) {
-            document.getElementById('sectionBgBlob').style.backgroundImage = `url('${settings.banner}')`;
-          }
-
-          // تحميل النصوص الترحيبية الديناميكية
-          if(settings.heroTitle) {
-            document.getElementById('heroTitle').innerHTML = settings.heroTitle;
-            document.getElementById('adminHeroTitleInput').value = settings.heroTitle;
-          }
-          if(settings.heroBio) {
-            document.getElementById('heroBio').innerText = settings.heroBio;
-            document.getElementById('adminHeroBioInput').value = settings.heroBio;
-          }
+      globalSections.forEach(s => {
+        if(s.status !== "frozen") {
+          const btn = document.createElement('button');
+          btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-100 px-5 py-2.5 rounded-xl text-xs font-bold transition";
+          btn.innerText = s.name;
+          btn.onclick = () => filterDynamicContent(s.id, s.password || null);
+          container.appendChild(btn);
         }
-      } catch (e) {
-        console.log("استخدام البيانات الافتراضية.", e);
-      }
+
+        const opt = document.createElement('option');
+        opt.value = s.id;
+        opt.innerText = s.name;
+        dropdown.appendChild(opt);
+      });
     }
 
-    // Dynamic menu categories
-    async function fetchDynamicSections() {
-      try {
-        const querySnapshot = await getDocs(collection(db, "sections"));
-        const container = document.getElementById('sectionsFilterContainer');
-        container.innerHTML = `<button onclick="filterContent('all')" class="bg-purple-600 text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition">الكل</button>`;
-        
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          if(data.status !== "inactive") {
-            const btn = document.createElement('button');
-            btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-100 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition";
-            btn.innerText = data.name;
-            btn.onclick = () => filterContent(data.slug, data.bgUrl || null);
-            container.appendChild(btn);
-          }
-        });
-      } catch(e) {
-        console.error(e);
-      }
+    async function renderAdminSections() {
+      const list = document.getElementById('adminSectionsList');
+      list.innerHTML = "";
+      globalSections.forEach(s => {
+        const div = document.createElement('div');
+        div.className = "bg-slate-900 border border-white/5 p-3 rounded-lg flex justify-between items-center text-xs";
+        div.innerHTML = `
+          <div>
+            <p class="font-bold text-white">${s.name} ${s.password ? '🔑' : ''}</p>
+            <p class="text-[10px] text-gray-400 mt-0.5">الحالة: ${s.status === 'frozen' ? 'مجمّد' : 'نشط'}</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="editSectionData('${s.id}')" class="text-blue-400 font-bold">تعديل</button>
+            <button onclick="deleteSectionDoc('${s.id}')" class="text-red-400 font-bold">حذف</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
     }
 
-    // Load apps and tools
-    async function fetchDynamicSoftware() {
+    document.getElementById('btnSaveSection').onclick = async () => {
+      const id = document.getElementById('editSecId').value;
+      const name = document.getElementById('secName').value.trim();
+      const status = document.getElementById('secStatus').value;
+      const password = document.getElementById('secPass').value.trim();
+
+      if(!name) {
+        alert("يرجى كتابة اسم القسم أولاً!");
+        return;
+      }
+
+      const data = { name, status, password };
+
+      if(id) {
+        await updateDoc(doc(db, "sections", id), data);
+      } else {
+        await addDoc(collection(db, "sections"), data);
+      }
+
+      alert("تم حفظ وتحديث الأقسام بنجاح! تم تصفير وإفراغ الخانات.");
+      clearSectionFields();
+      await fetchAndRenderSections();
+      renderAdminSections();
+    };
+
+    window.editSectionData = (id) => {
+      const s = globalSections.find(sec => sec.id === id);
+      if(s) {
+        document.getElementById('editSecId').value = s.id;
+        document.getElementById('secName').value = s.name;
+        document.getElementById('secStatus').value = s.status;
+        document.getElementById('secPass').value = s.password || "";
+      }
+    };
+
+    window.deleteSectionDoc = async (id) => {
+      if(!confirm("هل تود حذف هذا القسم نهائياً؟")) return;
+      await deleteDoc(doc(db, "sections", id));
+      await fetchAndRenderSections();
+      renderAdminSections();
+    };
+
+    window.clearSectionFields = () => {
+      document.getElementById('editSecId').value = "";
+      document.getElementById('secName').value = "";
+      document.getElementById('secStatus').value = "active";
+      document.getElementById('secPass').value = "";
+    };
+
+    // جلب وإدارة التطبيقات
+    async function fetchAndRenderSoftware() {
+      const snap = await getDocs(collection(db, "apps"));
+      globalItems = [];
+      snap.forEach(d => {
+        globalItems.push({ id: d.id, ...d.data() });
+      });
+
+      renderAllSoftwareCards(globalItems);
+    }
+
+    function renderAllSoftwareCards(items) {
       const appContainer = document.getElementById('appsGrid');
       const toolContainer = document.getElementById('toolsGrid');
       appContainer.innerHTML = "";
       toolContainer.innerHTML = "";
 
-      try {
-        const querySnapshot = await getDocs(collection(db, "apps"));
-        let appsCount = 0;
-        let toolsCount = 0;
+      let appsC = 0, toolsC = 0;
 
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          if(data.status !== "inactive") {
-            const card = createSoftwareCard(data, doc.id);
-            if(data.type === 'app') {
-              appContainer.appendChild(card);
-              appsCount++;
-            } else {
-              toolContainer.appendChild(card);
-              toolsCount++;
-            }
-          }
-        });
-
-        document.getElementById('statApps').innerText = appsCount;
-        document.getElementById('statTools').innerText = toolsCount;
-
-      } catch(e) {
-        console.error(e);
-      }
-    }
-
-    function createSoftwareCard(data, id) {
-      const div = document.createElement('div');
-      div.className = "glass p-5 sm:p-6 rounded-3xl border border-white/5 flex flex-col justify-between hover:border-purple-500/30 transition-all duration-300 group max-w-full overflow-hidden";
-      
-      const safeData = encodeURIComponent(JSON.stringify(data));
-      const firstImg = (data.images && data.images.length > 0) ? data.images[0] : (data.img || 'https://via.placeholder.com/150');
-
-      div.innerHTML = `
-        <div class="w-full aspect-video rounded-2xl overflow-hidden mb-5 bg-slate-800/50 flex-shrink-0">
-          <img src="${firstImg}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-        </div>
-        <div class="flex-grow mb-5">
-          <h4 class="font-extrabold text-lg sm:text-xl text-white truncate">${data.title}</h4>
-          <p class="text-xs sm:text-sm text-gray-300 mt-2 line-clamp-2 h-10 leading-relaxed font-semibold">${data.desc}</p>
-        </div>
-        <div>
-          <div class="flex items-center justify-between text-[11px] sm:text-xs text-gray-300 mb-4 border-t border-white/5 pt-3 font-bold">
-            <span>الحجم: ${data.size || 'N/A'}</span>
-            <span>الإصدار: ${data.version || '1.0.0'}</span>
-          </div>
-          <div class="flex gap-3">
-            <button onclick="openDetailsModal('${safeData}')" class="flex-1 text-center bg-slate-800 hover:bg-slate-700 text-xs sm:text-sm py-3.5 rounded-xl font-extrabold transition">التفاصيل</button>
-            <button onclick="handleDownloadLock('${data.downloadUrl}')" class="flex-1 text-center bg-purple-600 hover:bg-purple-700 text-xs sm:text-sm py-3.5 rounded-xl font-extrabold text-white transition">تحميل</button>
-          </div>
-        </div>
-      `;
-      return div;
-    }
-
-    // Save Section
-    window.addDynamicSection = async () => {
-      if(!isAdminAuthenticated) return;
-      const name = document.getElementById('secName').value;
-      const slug = document.getElementById('secSlug').value;
-      const status = document.getElementById('secStatus').value;
-
-      try {
-        await addDoc(collection(db, "sections"), { name, slug, status });
-        alert("تم حفظ القسم الجديد بنجاح!");
-        closeAdminSubModal('subModalSections');
-        fetchDynamicSections();
-      } catch (err) {
-        alert("حدث خطأ أثناء الاتصال.");
-      }
-    };
-
-    // Save Software with Multi-Photo Upload (Shein style)
-    window.saveSoftwareItemWithAutoUpload = async () => {
-      if(!isAdminAuthenticated) return;
-      const btn = document.getElementById('btnSaveSoftware');
-      btn.innerText = "جاري رفع الصور ونشر العنصر...";
-      btn.disabled = true;
-
-      const fileInput = document.getElementById('itemImgFiles');
-      let imgUrls = [];
-
-      if(fileInput.files.length > 0) {
-        for(let i=0; i<fileInput.files.length; i++) {
-          const url = await uploadSingleFile(fileInput.files[i]);
-          if(url) imgUrls.push(url);
-        }
-      }
-
-      const title = document.getElementById('itemTitle').value;
-      const type = document.getElementById('itemType').value;
-      const section = document.getElementById('itemSection').value;
-      const version = document.getElementById('itemVersion').value;
-      const size = document.getElementById('itemSize').value;
-      const developer = document.getElementById('itemDev').value;
-      const downloadUrl = document.getElementById('itemDownloadUrl').value;
-      const desc = document.getElementById('itemDesc').value;
-      const changelog = document.getElementById('itemChangelog').value;
-      const status = document.getElementById('itemStatus').value;
-
-      try {
-        await addDoc(collection(db, "apps"), {
-          title, type, images: imgUrls, section, version, size, developer, downloadUrl, desc, changelog, status
-        });
-        alert("تم رفع الصور ونشر المشروع بـ Firestore!");
-        closeAdminSubModal('subModalItems');
-        fetchDynamicSoftware();
-      } catch (err) {
-        console.error(err);
-      } finally {
-        btn.innerText = "رفع صور ونشر العنصر";
-        btn.disabled = false;
-      }
-    };
-
-    // Backgrounds, Banner, Avatars, Section-Specific Bgs, and Welcome Titles
-    window.saveUIVisuals = async () => {
-      if(!isAdminAuthenticated) return;
-      const btn = document.getElementById('btnSaveUI');
-      btn.innerText = "جاري رفع الواجهات...";
-      btn.disabled = true;
-
-      try {
-        const logoUrl = await uploadSingleFile(document.getElementById('adminSiteLogoFile').files[0]);
-        const bannerUrl = await uploadSingleFile(document.getElementById('adminBannerFile').files[0]);
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = "glass-heavy p-6 rounded-3xl flex flex-col justify-between hover:border-purple-500/30 transition-all duration-300 max-w-full overflow-hidden";
         
-        let updateData = {
-          heroTitle: document.getElementById('adminHeroTitleInput').value,
-          heroBio: document.getElementById('adminHeroBioInput').value
-        };
+        const firstImg = (item.images && item.images.length > 0) ? item.images[0] : 'https://via.placeholder.com/300x180';
+        const itemSafe = encodeURIComponent(JSON.stringify(item));
 
-        if(logoUrl) updateData.logo = logoUrl;
-        if(bannerUrl) updateData.banner = bannerUrl;
-
-        await setDoc(doc(db, "settings", "general"), updateData, { merge: true });
-
-        // Section Background Upload
-        const targetSec = document.getElementById('targetSecSlugBg').value;
-        const targetFile = document.getElementById('targetSecFileBg').files[0];
-        if(targetSec && targetFile) {
-          const secBgUrl = await uploadSingleFile(targetFile);
-          const querySnapshot = await getDocs(collection(db, "sections"));
-          querySnapshot.forEach(async (d) => {
-            if(d.data().slug === targetSec) {
-              await updateDoc(doc(db, "sections", d.id), { bgUrl: secBgUrl });
-            }
-          });
-        }
-
-        alert("تم تحديث الخلفيات والواجهات بنجاح!");
-        closeAdminSubModal('subModalBg');
-        fetchGlobalSettings();
-        fetchDynamicSections();
-      } catch(e) {
-        console.error(e);
-      } finally {
-        btn.innerText = "حفظ وتعميم التغييرات";
-        btn.disabled = false;
-      }
-    };
-
-    // Social and Mandatory Subscription Config
-    window.saveSocialSettings = async () => {
-      if(!isAdminAuthenticated) return;
-      const forceChannel = document.getElementById('adminForceChannel').value;
-      const devPhone = document.getElementById('devPhone').value;
-      const newChanName = document.getElementById('newChanName').value;
-      const newChanLink = document.getElementById('newChanLink').value;
-
-      try {
-        await setDoc(doc(db, "settings", "general"), { forceChannel, devPhone }, { merge: true });
-        if(newChanName && newChanLink) {
-          await addDoc(collection(db, "channels"), { name: newChanName, link: newChanLink });
-        }
-        alert("تم تحديث روابط التواصل والاشتراك الإجباري!");
-        closeAdminSubModal('subModalSocial');
-        fetchGlobalSettings();
-      } catch(e) {
-        console.error(e);
-      }
-    };
-
-    // ADVANCED MULTI-NOTIFICATION ENGINE (FIRESTORE)
-    window.publishCustomNotification = async () => {
-      if(!isAdminAuthenticated) return;
-      const btn = document.getElementById('btnSaveNotif');
-      btn.innerText = "جاري الحفظ والبث...";
-      btn.disabled = true;
-
-      const title = document.getElementById('notifTitle').value;
-      const body = document.getElementById('notifBody').value;
-      const bgColor = document.getElementById('notifBgColor').value;
-      const textColor = document.getElementById('notifTextColor').value;
-      const shape = document.getElementById('notifShape').value;
-      const schedule = document.getElementById('notifSchedule').value;
-      const duration = parseInt(document.getElementById('notifDuration').value) || 6;
-      const delay = parseInt(document.getElementById('notifDelay').value) || 0;
-
-      let imgUrl = "";
-      const imgFile = document.getElementById('notifImgFile').files[0];
-      if(imgFile) {
-        imgUrl = await uploadSingleFile(imgFile);
-      }
-
-      const notifData = {
-        title,
-        body,
-        bgColor,
-        textColor,
-        shape,
-        schedule,
-        duration,
-        delay,
-        imgUrl,
-        timestamp: Date.now()
-      };
-
-      try {
-        await addDoc(collection(db, "live_notifications"), notifData);
-        alert("تم بث الإشعار الجديد بنجاح!");
-        loadAdminNotificationsList(); // تحديث القائمة الإدارية
-        triggerLiveToast(notifData, Math.random().toString(36).substring(2, 9));
-      } catch(e) {
-        console.error("خطأ أثناء النشر:", e);
-      } finally {
-        btn.innerText = "بث ونشر هذا الإشعار";
-        btn.disabled = false;
-      }
-    };
-
-    // جلب وإدراج قائمة الاشعارات للتحكم بها داخل لوحة الادارة وحذفها
-    async function loadAdminNotificationsList() {
-      const container = document.getElementById('adminNotificationsList');
-      if(!container) return;
-      container.innerHTML = `<p class="text-xs text-gray-400 text-center py-6">جاري تحميل الإشعارات...</p>`;
-      
-      try {
-        const querySnapshot = await getDocs(collection(db, "live_notifications"));
-        if(querySnapshot.empty) {
-          container.innerHTML = `<p class="text-xs text-gray-400 text-center py-6">لا توجد إشعارات نشطة حالياً.</p>`;
-          return;
-        }
-        container.innerHTML = "";
-        querySnapshot.forEach((docSnap) => {
-          const data = docSnap.data();
-          const div = document.createElement('div');
-          div.className = "bg-slate-900 border border-white/5 p-3.5 rounded-xl flex items-center justify-between gap-3";
-          div.innerHTML = `
-            <div class="flex items-center gap-2 overflow-hidden">
-              <span class="w-3 h-3 rounded-full" style="background-color: ${data.bgColor}"></span>
-              <div class="truncate text-xs font-semibold">
-                <p class="text-slate-100 font-bold truncate">${data.title}</p>
-                <p class="text-gray-400 truncate mt-0.5">${data.body}</p>
-              </div>
+        div.innerHTML = `
+          <div class="w-full aspect-video rounded-2xl overflow-hidden mb-5 bg-slate-900 flex-shrink-0 relative">
+            <img src="${firstImg}" class="w-full h-full object-cover">
+            ${item.password ? `<span class="absolute top-2 right-2 bg-black/80 px-2.5 py-1 rounded-lg text-[10px] text-yellow-400 font-bold"><i class="fas fa-lock ml-1"></i>مقفل</span>` : ''}
+          </div>
+          <div class="flex-grow mb-4">
+            <h4 class="font-extrabold text-lg text-white truncate">${item.title}</h4>
+            <p class="text-xs text-gray-300 mt-2 line-clamp-2 h-10 leading-relaxed font-semibold">${item.desc}</p>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] text-gray-400 mb-3 font-bold border-t border-white/5 pt-3">
+              <span>الحجم: ${item.size || 'N/A'}</span>
+              <span>الاصدار: ${item.version || '1.0.0'}</span>
             </div>
-            <button onclick="deleteNotificationDoc('${docSnap.id}')" class="text-red-500 hover:text-red-400 p-2 flex-shrink-0" title="حذف الإشعار">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          `;
-          container.appendChild(div);
-        });
-      } catch(e) {
-        console.error("خطأ أثناء جلب قائمة الإشعارات للإدارة:", e);
-      }
-    }
-    // اجعل الدالة عامة
-    window.deleteNotificationDoc = async (id) => {
-      if(!confirm("هل أنت متأكد من رغبتك في حذف هذا الإشعار نهائياً من قاعدة البيانات؟")) return;
-      try {
-        await deleteDoc(doc(db, "live_notifications", id));
-        alert("تم حذف الإشعار بنجاح!");
-        loadAdminNotificationsList(); // إعادة التحميل
-        
-        // إزالة الإشعار من الشاشة فورياً إن كان ظاهراً
-        const toastEl = document.getElementById(`toast-${id}`);
-        if(toastEl) toastEl.remove();
-      } catch(e) {
-        alert("حدث خطأ أثناء محاولة الحذف.");
-      }
-    };
-
-    // Toast Trigger with Hover/Touch Pause and Auto-Countdown
-    function triggerLiveToast(notif, id) {
-      if (notif.schedule === "once_per_entry") {
-        if (sessionStorage.getItem(`notif_shown_entry_${id}`)) return;
-        sessionStorage.setItem(`notif_shown_entry_${id}`, "true");
-      } else if (notif.schedule === "once_a_day") {
-        const today = new Date().toDateString();
-        if (localStorage.getItem(`notif_shown_day_${id}`) === today) return;
-        localStorage.setItem(`notif_shown_day_${id}`, today);
-      }
-
-      setTimeout(() => {
-        const container = document.getElementById('toastContainer');
-        
-        const toast = document.createElement('div');
-        toast.id = `toast-${id}`;
-        toast.style.backgroundColor = notif.bgColor || "#7c3aed";
-        toast.style.color = notif.textColor || "#ffffff";
-        toast.className = `glass p-5 flex items-center gap-4 shadow-2xl transition-all duration-500 transform translate-x-[-150%] pointer-events-auto ${notif.shape || 'rounded-2xl'}`;
-        
-        toast.innerHTML = `
-          ${notif.imgUrl ? `<img src="${notif.imgUrl}" class="w-12 h-12 rounded-xl object-cover flex-shrink-0">` : ''}
-          <div class="flex-grow">
-            <h5 class="font-extrabold text-sm sm:text-base">${notif.title}</h5>
-            <p class="text-xs sm:text-sm opacity-90 mt-0.5">${notif.body}</p>
+            <div class="flex gap-2">
+              <button onclick="openDetails('${itemSafe}')" class="flex-1 bg-slate-800 hover:bg-slate-700 py-3 rounded-xl text-xs font-bold text-white">تفاصيل</button>
+              <button onclick="handleDownloadLink('${itemSafe}')" class="flex-1 bg-purple-600 hover:bg-purple-700 py-3 rounded-xl text-xs font-black text-white">تحميل</button>
+            </div>
           </div>
-          <button onclick="this.parentElement.remove()" class="text-white/80 hover:text-white mr-2 flex-shrink-0"><i class="fas fa-times"></i></button>
         `;
 
-        container.appendChild(toast);
+        if(item.type === 'app') {
+          appContainer.appendChild(div);
+          appsC++;
+        } else {
+          toolContainer.appendChild(div);
+          toolsC++;
+        }
+      });
 
-        // دخول سلس
-        setTimeout(() => {
-          toast.style.transform = "translateX(0)";
-        }, 100);
-
-        // آلية التثبيت عند ملامسة الشاشة أو تلمس الماوس (Pause on Hover/Touch)
-        let timer;
-        let timeLeft = notif.duration * 1000;
-        let startTimestamp = Date.now();
-
-        const startTimer = (duration) => {
-          startTimestamp = Date.now();
-          timer = setTimeout(() => {
-            toast.style.transform = "translateX(-150%)";
-            setTimeout(() => toast.remove(), 500);
-          }, duration);
-        };
-
-        const pauseTimer = () => {
-          clearTimeout(timer);
-          timeLeft -= Date.now() - startTimestamp;
-        };
-
-        const resumeTimer = () => {
-          if (timeLeft > 0) {
-            startTimer(timeLeft);
-          }
-        };
-
-        // أحداث الحاسوب والجوال لتثبيت الإشعار باللمس أو المرور المباشر
-        toast.addEventListener('mouseenter', pauseTimer);
-        toast.addEventListener('mouseleave', resumeTimer);
-        toast.addEventListener('touchstart', pauseTimer);
-        toast.addEventListener('touchend', resumeTimer);
-
-        // بدء العداد الافتراضي للاختفاء
-        startTimer(timeLeft);
-
-      }, notif.delay * 1000);
+      document.getElementById('statApps').innerText = appsC;
+      document.getElementById('statTools').innerText = toolsC;
     }
 
-    // جلب وفحص كافة الإشعارات الفعالة عند الدخول
-    async function loadAllActiveNotifications() {
-      try {
-        const querySnapshot = await getDocs(collection(db, "live_notifications"));
-        querySnapshot.forEach((doc) => {
-          const notif = doc.data();
-          triggerLiveToast(notif, doc.id);
-        });
-      } catch(e){
-        console.error("لم يتم العثور على قاعدة إشعارات سابقة:", e);
+    async function uploadMultipleFilesToImgBB(files) {
+      let urls = [];
+      for(let i=0; i<files.length; i++) {
+        const url = await uploadSingleFileToImgBB(files[i]);
+        if(url) urls.push(url);
       }
+      return urls;
     }
 
-    // Filter by category & apply Dynamic background
-    window.filterContent = async (slug, bgUrl = null) => {
-      const appContainer = document.getElementById('appsGrid');
-      const toolContainer = document.getElementById('toolsGrid');
-      appContainer.innerHTML = "";
-      toolContainer.innerHTML = "";
+    document.getElementById('btnSaveSoftware').onclick = async () => {
+      const id = document.getElementById('editItemId').value;
+      const title = document.getElementById('itemTitle').value.trim();
+      const section = document.getElementById('itemSectionDropdown').value;
+      const type = document.getElementById('itemType').value;
+      const version = document.getElementById('itemVersion').value.trim();
+      const size = document.getElementById('itemSize').value.trim();
+      const developer = document.getElementById('itemDev').value.trim();
+      const downloadUrl = document.getElementById('itemDownloadUrl').value.trim();
+      const password = document.getElementById('itemPass').value.trim();
+      const forceLogin = document.getElementById('itemForceLogin').value === "true";
+      const desc = document.getElementById('itemDesc').value.trim();
+      const changelog = document.getElementById('itemChangelog').value.trim();
 
-      const bgBlob = document.getElementById('sectionBgBlob');
-      if(bgUrl) {
-        bgBlob.style.backgroundImage = `url('${bgUrl}')`;
-        bgBlob.style.opacity = "0.25";
+      if(!title || !downloadUrl) {
+        alert("يرجى ملء اسم التطبيق ورابط التحميل المباشر!");
+        return;
+      }
+
+      const btn = document.getElementById('btnSaveSoftware');
+      btn.disabled = true;
+      btn.innerText = "جاري معالجة الرفع والتحديث بالفايربيز...";
+
+      let images = [];
+      const files = document.getElementById('itemImgFiles').files;
+      if(files.length > 0) {
+        images = await uploadMultipleFilesToImgBB(files);
+      }
+
+      const itemData = { title, section, type, version, size, developer, downloadUrl, password, forceLogin, desc, changelog };
+      if(images.length > 0) itemData.images = images;
+
+      if(id) {
+        await updateDoc(doc(db, "apps", id), itemData);
       } else {
-        bgBlob.style.backgroundImage = "none";
+        if(images.length === 0) itemData.images = ['https://via.placeholder.com/300x180'];
+        await addDoc(collection(db, "apps"), itemData);
       }
 
-      try {
-        const querySnapshot = await getDocs(collection(db, "apps"));
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          if(data.status !== "inactive" && (slug === 'all' || data.section === slug)) {
-            const card = createSoftwareCard(data, doc.id);
-            if(data.type === 'app') {
-              appContainer.appendChild(card);
-            } else {
-              toolContainer.appendChild(card);
-            }
-          }
-        });
-      } catch (err) {
-        console.error(err);
+      alert("تم حفظ ونشر وتعديل الأداة بنجاح! تم تصفير جميع الخانات.");
+      clearSoftwareFields();
+      await fetchAndRenderSoftware();
+      renderAdminSoftware();
+      
+      btn.disabled = false;
+      btn.innerText = "حفظ وتعميم البرمجية";
+    };
+
+    window.editSoftwareItem = (id) => {
+      const item = globalItems.find(i => i.id === id);
+      if(item) {
+        document.getElementById('editItemId').value = item.id;
+        document.getElementById('itemTitle').value = item.title;
+        document.getElementById('itemSectionDropdown').value = item.section || "";
+        document.getElementById('itemType').value = item.type || "app";
+        document.getElementById('itemVersion').value = item.version || "";
+        document.getElementById('itemSize').value = item.size || "";
+        document.getElementById('itemDev').value = item.developer || "";
+        document.getElementById('itemDownloadUrl').value = item.downloadUrl || "";
+        document.getElementById('itemPass').value = item.password || "";
+        document.getElementById('itemForceLogin').value = item.forceLogin ? "true" : "false";
+        document.getElementById('itemDesc').value = item.desc || "";
+        document.getElementById('itemChangelog').value = item.changelog || "";
+        
+        document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
 
-    // Modal Details & Slide Controls
-    window.openDetailsModal = (safeData) => {
-      const item = JSON.parse(decodeURIComponent(safeData));
-      document.getElementById('modalItemTitle').innerText = item.title;
-      document.getElementById('modalItemDesc').innerText = item.desc;
-      document.getElementById('modalItemVersion').innerText = item.version || '1.0.0';
-      document.getElementById('modalItemSize').innerText = item.size || '0 MB';
-      document.getElementById('modalItemDeveloper').innerText = item.developer || 'Yami Dev';
-      document.getElementById('modalItemChangelog').innerText = item.changelog || 'لا يوجد تحديثات.';
-      
-      if(item.images && item.images.length > 0) {
-        activeImages = item.images;
-      } else {
-        activeImages = [item.img || 'https://via.placeholder.com/150'];
+    window.deleteSoftwareItem = async (id) => {
+      if(!confirm("هل تود حذف هذه البرمجية نهائياً من النظام؟")) return;
+      await deleteDoc(doc(db, "apps", id));
+      await fetchAndRenderSoftware();
+      renderAdminSoftware();
+    };
+
+    window.clearSoftwareFields = () => {
+      document.getElementById('editItemId').value = "";
+      document.getElementById('itemTitle').value = "";
+      document.getElementById('itemSectionDropdown').value = "";
+      document.getElementById('itemType').value = "app";
+      document.getElementById('itemVersion').value = "";
+      document.getElementById('itemSize').value = "";
+      document.getElementById('itemDev').value = "";
+      document.getElementById('itemDownloadUrl').value = "";
+      document.getElementById('itemPass').value = "";
+      document.getElementById('itemForceLogin').value = "false";
+      document.getElementById('itemImgFiles').value = "";
+      document.getElementById('itemDesc').value = "";
+      document.getElementById('itemChangelog').value = "";
+    };
+
+    function renderAdminSoftware() {
+      const list = document.getElementById('adminItemsList');
+      list.innerHTML = "";
+      globalItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = "bg-slate-900 border border-white/5 p-4 rounded-xl flex flex-col justify-between text-xs";
+        div.innerHTML = `
+          <div>
+            <h5 class="font-extrabold text-white truncate">${item.title}</h5>
+            <p class="text-[10px] text-gray-400 mt-1">النوع: ${item.type === 'app' ? 'تطبيق' : 'أداة'}</p>
+          </div>
+          <div class="flex gap-2.5 mt-3 pt-3 border-t border-white/5">
+            <button onclick="editSoftwareItem('${item.id}')" class="flex-1 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white py-1.5 rounded-lg transition font-bold">تعديل</button>
+            <button onclick="deleteSoftwareItem('${item.id}')" class="flex-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white py-1.5 rounded-lg transition font-bold">حذف</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    // البحث المخصص للمدير داخل لوحة التحكم
+    window.runAdminItemsSearch = (val) => {
+      const filtered = globalItems.filter(item => item.title.toLowerCase().includes(val.toLowerCase()));
+      const list = document.getElementById('adminItemsList');
+      list.innerHTML = "";
+      filtered.forEach(item => {
+        const div = document.createElement('div');
+        div.className = "bg-slate-900 border border-white/5 p-4 rounded-xl flex flex-col justify-between text-xs";
+        div.innerHTML = `
+          <div>
+            <h5 class="font-extrabold text-white truncate">${item.title}</h5>
+            <p class="text-[10px] text-gray-400 mt-1">النوع: ${item.type === 'app' ? 'تطبيق' : 'أداة'}</p>
+          </div>
+          <div class="flex gap-2.5 mt-3 pt-3 border-t border-white/5">
+            <button onclick="editSoftwareItem('${item.id}')" class="flex-1 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white py-1.5 rounded-lg transition font-bold">تعديل</button>
+            <button onclick="deleteSoftwareItem('${item.id}')" class="flex-1 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white py-1.5 rounded-lg transition font-bold">حذف</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    };
+
+    // ==============================================
+    // 9. SEARCH & FILTERS (END-USER)
+    // ==============================================
+    window.runAlphabeticalSearch = (val) => {
+      const query = val.toLowerCase().trim();
+      const filtered = globalItems.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        (item.desc && item.desc.toLowerCase().includes(query))
+      );
+      renderAllSoftwareCards(filtered);
+    };
+
+    window.filterDynamicContent = (secId, password = null) => {
+      if(password) {
+        const input = prompt("هذا القسم مقفل برمز سري مخصص، يرجى إدخال الرمز السري للمتابعة:");
+        if(input !== password) {
+          alert("الرمز السري غير صحيح! لا يمكن فتح القسم.");
+          return;
+        }
       }
+
+      if(secId === 'all') {
+        renderAllSoftwareCards(globalItems);
+      } else {
+        const filtered = globalItems.filter(item => item.section === secId);
+        renderAllSoftwareCards(filtered);
+      }
+    };
+
+    // ==============================================
+    // 10. DOWNLOAD & SECURITY LOGIC
+    // ==============================================
+    window.handleDownloadLink = async (itemJson) => {
+      const item = JSON.parse(decodeURIComponent(itemJson));
+
+      // تحقق من فرض تسجيل الدخول
+      if(item.forceLogin && !loggedInUser) {
+        alert("🔒 هذا الملف البرمجي حصري للمستخدمين المسجلين فقط! يرجى تسجيل الدخول عبر Google أولاً.");
+        openLoginModal();
+        return;
+      }
+
+      // تحقق من وجود قفل برمز سري للتطبيق
+      if(item.password) {
+        const passInput = prompt("🔑 يرجى إدخال رمز التحميل السري المخصص لهذا البرنامج:");
+        if(passInput !== item.password) {
+          alert("رمز التحميل السري غير صحيح!");
+          return;
+        }
+      }
+
+      // فحص إذا كان "الاشتراك الإجباري في قناة الواتس" مفعلاً في قاعدة البيانات
+      const docRef = doc(db, "settings", "developer");
+      const snap = await getDoc(docRef);
+      if(snap.exists() && snap.data().forceSub === true) {
+        // إذا لم يكن قد تحقق من الاشتراك مسبقاً، نظهر له النافذة التوهيمية
+        if(!localStorage.getItem('whatsapp_subscribed_yami')) {
+          selectedItemForDownload = item; // الاحتفاظ بالتطبيق لبدء تحميله بعد التحقق
+          document.getElementById('subVerificationModal').classList.remove('hidden');
+          return;
+        }
+      }
+
+      executeDirectDownload(item);
+    };
+
+    function executeDirectDownload(item) {
+      alert(`✨ جاري تهيئة ملفات "${item.title}" والبدء بالتحميل...`);
+      window.open(item.downloadUrl, '_blank');
+    }
+
+    // عند الضغط على زر "الانضمام لقناة الواتساب" بالنافذة، نفعل زر التحقق
+    window.triggerSubClicked = () => {
+      const checkBtn = document.getElementById('verificationCheckBtn');
+      checkBtn.disabled = false;
+      checkBtn.className = "w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-black py-3.5 rounded-xl text-xs transition cursor-pointer shadow-lg animate-pulse";
+    };
+
+    // معالجة الضغط على زر التحقق (نظام فحص توهيمي احترافي)
+    window.verifySubscriptionProcess = () => {
+      const checkBtn = document.getElementById('verificationCheckBtn');
+      checkBtn.innerText = "جاري التحقق من الخوادم البرمجية...";
+      checkBtn.disabled = true;
+
+      setTimeout(() => {
+        localStorage.setItem('whatsapp_subscribed_yami', 'true');
+        document.getElementById('subVerificationModal').classList.add('hidden');
+        
+        // إعادة التعيين
+        checkBtn.innerText = "التحقق من أنك مشترك";
+        checkBtn.disabled = true;
+        checkBtn.className = "w-full bg-slate-800 text-slate-500 font-black py-3.5 rounded-xl text-xs transition cursor-not-allowed";
+
+        alert("✅ تم التحقق من اشتراكك بنجاح! سيتم الآن بدء التحميل.");
+        if(selectedItemForDownload) {
+          executeDirectDownload(selectedItemForDownload);
+          selectedItemForDownload = null;
+        }
+      }, 2500); // 2.5 ثانية انتظار لإعطاء هيبة ومصداقية للفحص التوهيمي
+    };
+
+    // ==============================================
+    // 11. DETAILS SLIDER MODAL
+    // ==============================================
+    window.openDetails = (itemJson) => {
+      const item = JSON.parse(decodeURIComponent(itemJson));
+      document.getElementById('modalItemTitle').innerText = item.title;
+      document.getElementById('modalItemVersion').innerText = item.version || "1.0.0";
+      document.getElementById('modalItemSize').innerText = item.size || "N/A";
+      document.getElementById('modalItemDeveloper').innerText = item.developer || "Yami Dev";
+      document.getElementById('modalItemDesc').innerText = item.desc || "لا يوجد وصف حالياً لهذه البرمجية.";
+      document.getElementById('modalItemChangelog').innerText = item.changelog || "لا يوجد تحديثات مسجلة.";
+
+      activeImages = item.images || ['https://via.placeholder.com/300x180'];
       activeImgIndex = 0;
       updateSliderUI();
 
       document.getElementById('modalDownloadBtn').onclick = () => {
         closeDetailsModal();
-        handleDownloadLock(item.downloadUrl);
+        handleDownloadLink(itemJson);
       };
 
       document.getElementById('detailsModal').classList.remove('hidden');
+    };
+
+    window.closeDetailsModal = () => {
+      document.getElementById('detailsModal').classList.add('hidden');
     };
 
     function updateSliderUI() {
@@ -1153,89 +1471,11 @@
       updateSliderUI();
     };
 
-    window.closeDetailsModal = () => {
-      document.getElementById('detailsModal').classList.add('hidden');
-    };
+    // ربط الزر الفعلي لحفظ التخصيص
+    document.getElementById('saveCustomizeBtn').onclick = registerAndCustomizeUser;
 
-    // Mandatory Subscription Lock Logic (YouTube Lock)
-    window.handleDownloadLock = (downloadUrl) => {
-      activeDownloadUrl = downloadUrl;
-      const isSubscribed = localStorage.getItem('yami_subscribed') === 'true';
-
-      if (isSubscribed) {
-        window.open(activeDownloadUrl, '_blank');
-      } else {
-        document.getElementById('lockChannelLink').href = forceSubscriptionUrl;
-        document.getElementById('lockModal').classList.remove('hidden');
-      }
-    };
-
-    window.unlockNextStep = () => {
-      const dlBtn = document.getElementById('lockDownloadBtn');
-      dlBtn.disabled = false;
-      dlBtn.classList.remove('bg-slate-700', 'text-slate-400', 'cursor-not-allowed');
-      dlBtn.classList.add('bg-purple-600', 'hover:bg-purple-700', 'text-white');
-      
-      dlBtn.onclick = () => {
-        localStorage.setItem('yami_subscribed', 'true');
-        document.getElementById('lockModal').classList.add('hidden');
-        window.open(activeDownloadUrl, '_blank');
-      };
-    };
-
-    // Dark/Light Theme Toggle
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    
-    themeToggleBtn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      if (document.documentElement.classList.contains('dark')) {
-        themeIcon.className = "fas fa-moon text-base sm:text-lg";
-        localStorage.setItem('theme', 'dark');
-      } else {
-        themeIcon.className = "fas fa-sun text-base sm:text-lg";
-        localStorage.setItem('theme', 'light');
-      }
-    });
-
-    // Load Theme State
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-      themeIcon.className = "fas fa-moon text-base sm:text-lg";
-    } else {
-      document.documentElement.classList.remove('dark');
-      themeIcon.className = "fas fa-sun text-base sm:text-lg";
-    }
-
-    // Load Footer Channels
-    async function fetchFooterChannels() {
-      const container = document.getElementById('channelsContainer');
-      container.innerHTML = "";
-      try {
-        const querySnapshot = await getDocs(collection(db, "channels"));
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          const link = document.createElement('a');
-          link.href = data.link;
-          link.target = "_blank";
-          link.className = "bg-purple-600/10 hover:bg-purple-600/20 text-purple-400 border border-purple-500/20 text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition flex items-center gap-2";
-          link.innerHTML = `<i class="fab fa-youtube text-red-500"></i> ${data.name}`;
-          container.appendChild(link);
-        });
-      } catch(e) {
-        console.error(e);
-      }
-    }
-
-    // Initialize Web App Core
-    window.addEventListener('DOMContentLoaded', async () => {
-      await fetchGlobalSettings();
-      await fetchDynamicSections();
-      await fetchDynamicSoftware();
-      await fetchFooterChannels();
-      await loadAllActiveNotifications();
-    });
-
+    // تشغيل المنصة تلقائياً
+    initPlatform();
   </script>
 </body>
 </html>
